@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table id="table1" width="100px" border="1">
+			<caption>标题</caption>
+			<tr>
+				<td>1</td>
+			</tr>
+		</table>
+		<button id="info">获取属性</button>
+		<button id="addrow">增加行</button>
+		<button id="deleterow">删除行</button>
+		<script type="text/javascript">
+			var info=document.getElementById("info");
+			info.addEventListener("click",function(){
+				var table=document.getElementById("table1");
+				alert(table.rows[0]);
+			})
+			var addrow=document.getElementById("addrow");
+			addrow.addEventListener("click",function(){
+				var table=document.getElementById("table1");
+				table.insertRow(0);
+				table.rows[0].insertCell(0);
+				table.rows[0].cells[0].appendChild(document.createTextNode("Hello"));
+			})
+			var deleterow=document.getElementById("deleterow");
+			deleterow.addEventListener("click",function(){
+				var table=document.getElementById("table1");
+				table.deleteRow(0);
+			})
+		</script>
+	</body>
+</html>

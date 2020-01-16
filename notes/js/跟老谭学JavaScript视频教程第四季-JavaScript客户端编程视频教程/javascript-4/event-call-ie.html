@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="button" value="按钮1" id="btn1" onclick="test(e)"/>
+		<input type="button" value="按钮2" id="btn2" />
+		<input type="button" value="按钮3" id="btn3" />
+		<script type="text/javascript">
+			var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var btn3 = document.getElementById("btn3");
+			
+			function test(e){
+				alert(e);
+			}
+			
+			btn2.onclick=function(e){
+				alert(e);
+			}
+			btn3.attachEvent("onclick",function(e){
+				alert(e);
+				alert(this);
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn1" />
+		<input type="button" value="取消" id="btn2" />
+		<script type="text/javascript">
+			var btn1=document.getElementById("btn1");
+			btn1.addEventListener("click",test);
+			btn1.addEventListener("click",test);
+			
+			function test(){
+				alert("test");
+			}
+			
+			var btn2=document.getElementById("btn2");
+			btn2.addEventListener("click",function(){
+				btn1.removeEventListener("click",test);
+			})
+		</script>
+	</body>
+</html>

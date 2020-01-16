@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var user={
+				age:20
+			}
+			Object.defineProperty(user,"myage",{
+				configurable:false,
+				enumerable:false,
+				get:function(){
+					return this.age;
+				},
+				set:function(newAge){
+					if(newAge<0){
+						newAge=0;
+					}
+					this.age=newAge;
+				}
+			});
+			console.log(user.myage);
+			user.myage=30;
+			console.log(user.myage);
+			console.log(user.age);
+			user.myage=-100;
+			console.log(user.age);
+			
+			user.__defineGetter__("age1",function(){
+				return this.age;
+			});
+			user.__defineSetter__("age1",function(newAge){
+				this.age=newAge;
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

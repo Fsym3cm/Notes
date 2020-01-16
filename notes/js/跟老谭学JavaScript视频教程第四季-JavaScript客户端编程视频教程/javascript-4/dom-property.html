@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" data-my-attr="myattr" name="" id="username" value="laotan" style="color: red;" onclick="alert(1)" />
+		<button id="btn1">按钮1</button>
+		<button id="btn2">按钮2</button>
+		<script type="text/javascript">
+			var username = document.getElementById("username");
+			console.log(username.getAttribute("type"));
+			console.log(username.getAttribute("readonly"));
+			username.setAttribute("type","radio");
+			console.log(username.hasAttribute("readonly"));
+			username.removeAttribute("readonly");
+						var attrs=username.attributes;
+						for(var i=0;i<attrs.length;i++){
+							console.log(attrs[i].nodeName+","+attrs[i].nodeValue);
+						}
+			console.log(username.id);
+			console.log(username.readOnly);
+			document.getElementById("btn1").addEventListener("click", function() {
+				console.log(username.getAttribute("value"));
+				console.log(username.value);
+			})
+			document.getElementById("btn2").addEventListener("click", function() {
+				username.setAttribute("value", "老谭");
+			})
+			
+				console.log(username.getAttribute("style"))
+				console.log(username.style)
+				console.log(username.getAttribute("onclick"));
+				console.log(username.onclick);
+				console.log(username.getAttribute("data-myattr"));
+				console.log(username["data-myattr"]);
+			
+			console.log(username.dataset.myAttr)
+			delete username.dataset.myAttr;
+		</script>
+	</body>
+
+</html>

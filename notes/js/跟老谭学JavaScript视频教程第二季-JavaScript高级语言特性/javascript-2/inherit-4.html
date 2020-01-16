@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function Parent(name){
+				this.name=name;
+				this.address=["成都","内江"];
+			}
+			
+			Parent.prototype.getName=function(){
+				return this.name;
+			}
+			
+			function Son(name){
+				Parent.call(this,name);
+			}
+			
+			Son.prototype=new Parent();
+			
+			var son1=new Son("张三");
+			console.log(son1.getName());
+			son1.address[2]="绵阳";
+			console.log(son1.address);
+			var son2=new Son("李四");
+			console.log(son2.getName());
+			console.log(son2.address);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

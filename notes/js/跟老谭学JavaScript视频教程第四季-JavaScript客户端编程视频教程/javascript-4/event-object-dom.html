@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="button" value="按钮" id="btn1" />
+		<script type="text/javascript">
+			document.getElementById("btn1").addEventListener("click", function(e) {
+				alert(e);
+				alert("bubbles:" + e.bubbles);
+				alert("cancelable:" + e.cancelable);
+				alert("currentTarget:" + e.currentTarget);
+				alert("target:" + e.target);
+				alert("eventPhase:" + e.eventPhase);
+				alert("type:" + e.type);
+				alert("isTrusted:" + e.isTrusted);
+			});
+		</script>
+	</body>
+
+</html>

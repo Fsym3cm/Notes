@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function MyError(message){
+				this.name="MyError";
+				this.message=message;
+			}
+			
+			MyError.prototype=new Error();
+			
+			function div(num1,num2){
+				if(num2<=0){
+					throw new MyError("除数不能为非正数!");
+				}
+				return num1/num2;
+			}
+			
+			try{
+				console.log(div(10,0));
+			}catch(error){
+				console.log(error.name+","+error.message);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

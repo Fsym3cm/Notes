@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(num){
+				console.log(num);
+				f1.count++;
+			}
+			f1.count=0;
+			
+			f1(1);
+			f1(2);
+			f1(3);
+			
+			console.log(f1.count);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

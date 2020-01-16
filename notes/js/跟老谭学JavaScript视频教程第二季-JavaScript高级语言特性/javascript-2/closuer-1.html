@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(){
+				var num=10;
+				function f2(){
+					console.log(num);
+				}
+				//f2();
+				return f2;
+			}
+			f1()();
+			//console.log(num);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

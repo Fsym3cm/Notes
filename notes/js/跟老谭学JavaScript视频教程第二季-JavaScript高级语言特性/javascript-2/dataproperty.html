@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var user={};
+			Object.defineProperty(user,"name",{
+				configurable:true,
+				enumerable:true,
+				writable:false,
+				value:"laotan"
+			});
+			//console.log(user.name);
+			//delete user.name;
+			console.log(user.name);
+			for(var p in user){
+				console.log(p);
+			}
+			user.name="老谭";
+			console.log(user.name);
+			
+			Object.defineProperties(user,{
+				"age":{
+					configurable:true,
+					enumerable:true,
+					writable:true,
+					value:19
+				},
+				"address":{
+					configurable:true,
+					enumerable:true,
+					writable:true,
+					value:"成都"
+				}
+			});
+			console.log(user.age);
+			console.log(user.address);
+			
+			var desc=Object.getOwnPropertyDescriptor(user,"name");
+			for(var p in desc){
+				console.log(p+":"+desc[p]);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

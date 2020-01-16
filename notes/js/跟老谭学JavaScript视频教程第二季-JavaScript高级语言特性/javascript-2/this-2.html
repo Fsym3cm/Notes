@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(){
+				var num=10;
+				this.f2();
+			}
+			
+			function f2(){
+				num = 1
+				console.log(this.num);
+			}
+			
+			f1();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

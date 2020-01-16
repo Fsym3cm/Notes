@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var user1={
+				name:"老谭"
+			}
+			var user2={
+				name:"laotan"
+			}
+			function getInfo(){
+				return this.name;
+			}
+			console.log(getInfo.call(user1));
+			console.log(getInfo.call(user2));
+			console.log(getInfo.apply(user2));
+			
+			var getInfo2=getInfo.bind(user2);
+			console.log(getInfo2());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

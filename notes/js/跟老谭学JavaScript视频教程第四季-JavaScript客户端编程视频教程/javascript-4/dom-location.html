@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			console.log(location.protocol);
+			console.log(location.host);
+			console.log(location.hostname);
+			console.log(location.port);
+			console.log(location.href);
+			console.log(location.pathname);
+			console.log(location.search);
+			console.log(location.hash);
+		</script>
+	</head>
+	<body>
+		<button id="go">跳转</button>
+		<script type="text/javascript">
+			var go=document.getElementById("go");
+			go.addEventListener("click",function(){
+				//location.href="bom-window.html";
+				//location.assign("bom-window.html");
+				location.replace("bom-window.html");
+			})
+		</script>
+	</body>
+</html>

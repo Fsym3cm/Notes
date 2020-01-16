@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>document</title>
+	</head>
+	<body>
+		<input type="text" name="" id="info" />
+		<input type="button" id="btn1" value="选择" />
+		<script type="text/javascript">
+			console.log(document.nodeType);
+			var info=document.getElementById("info");
+			console.log(info.tagName);
+			console.log(info.nodeType);
+			console.log(info.nodeName);
+			console.log(document.nodeName);
+			console.log(document.nodeValue);
+			console.log(document.title);
+			console.log(document.URL);
+			console.log(document.domain);
+			console.log(document.referrer);
+			
+			document.write("hello laotan");
+			var btn=document.getElementById("btn1");
+			btn.addEventListener("click",function(){
+				console.log(document.getSelection());
+			})
+		</script>
+	</body>
+</html>

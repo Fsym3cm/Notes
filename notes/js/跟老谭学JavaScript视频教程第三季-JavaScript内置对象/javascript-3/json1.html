@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var s='{"id":1,"name":"laotan"}';
+			var r=JSON.parse(s);
+			console.log(r.id+","+r.name);
+			r=JSON.parse(s,function(k,v){
+				console.log(k);
+				if(k==""){
+					return v;
+				}
+				return v+="test";
+			});
+			console.log(r.id+","+r.name);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

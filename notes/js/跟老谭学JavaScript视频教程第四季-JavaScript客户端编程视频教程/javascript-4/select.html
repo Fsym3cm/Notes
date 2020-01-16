@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select name="names" id="names" size=1>
+			<option value="1" label="汤姆">Tom</option>
+			<option value="2">Jack</option>
+			<option value="3">Rose</option>
+		</select>
+		<button id="btn1">按钮</button>
+		<button id="btn2">增加选项</button>
+		<button id="btn3">移除选项</button>
+		<button id="btn4">获取选项</button>
+		<script type="text/javascript">
+			var btn=document.getElementById("btn1");
+			btn.addEventListener("click",function(){
+				var select=document.getElementById("names");
+				//alert(select.multiple);
+				//alert(select.selectedIndex);
+				//alert(select.size);
+				//alert(select.type);
+				//alert(select.value);
+				select.value=3;
+			})
+			var btn2=document.getElementById("btn2");
+			btn2.addEventListener("click",function(){
+				var newOption=new Option("laotan","4");
+				var select=document.getElementById("names");
+				select.add(newOption,select.options[2]);
+			})
+			var btn3=document.getElementById("btn3");
+			btn3.addEventListener("click",function(){
+				var select=document.getElementById("names");
+				select.remove(2);
+			})
+			var btn4=document.getElementById("btn4");
+			btn4.addEventListener("click",function(){
+				var select=document.getElementById("names");
+				var option=select.options[1];
+				//alert(option.text);
+				//alert(option.value);
+				//alert(option.index);
+				//alert(option.label);
+				//alert(option.selected);
+				option.selected=true;
+			})
+		</script>
+	</body>
+</html>

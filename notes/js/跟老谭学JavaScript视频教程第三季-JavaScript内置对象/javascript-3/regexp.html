@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var p1 = /de/igm;
+			var p2 = new RegExp("de", "ig");
+			console.log(p2.global+","+p2.ignoreCase+","+p2.multiline+","+p2.source);
+			var s="abcdefgDescferDE";
+			//console.log(p2.exec(s));
+			do{
+				r=p2.exec(s);
+				console.log(r);
+			}while(r!=null);
+			
+			console.log(p2.test(s));
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

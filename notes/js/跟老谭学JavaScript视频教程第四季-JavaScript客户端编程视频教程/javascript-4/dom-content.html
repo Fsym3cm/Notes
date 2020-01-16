@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<p>段落1</p>
+			<p>段落2</p>
+			<script type="text/javascript">
+				var num=10;
+			</script>
+			<table>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+				</tr>
+			</table>
+		</div>
+		<div id="div2"></div>
+		<script type="text/javascript">
+			console.log(document.getElementById("div1").textContent);
+			document.getElementById("div2").innerText="DIV2";
+			console.log(document.getElementById("div1").innerHTML);
+			document.getElementById("div2").innerHTML="<b>DIV2</b>";
+			console.log(document.getElementById("div1").firstElementChild.firstChild.nodeValue);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form id="form1" action="http://www.baidu.com" name="form1">
+			<input type="text" name="username" />
+			<input type="button" value="提交" id="btn1" />
+		</form>
+		<script type="text/javascript">
+			var form1 = document.getElementById("form1");
+			//alert(form1.length);
+			var btn1 = document.getElementById("btn1");
+			btn1.addEventListener("click", function() {
+				//alert(form1.elements[0].value);
+				//form1.action = "http://www.qq.com";
+				//form1.submit();
+				//form1.elements[0].blur();
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var nums=[10,20,30];
+			for(var p in nums){
+				console.log(typeof p);
+				console.log(p+":"+nums[p]);
+			}
+			console.log(nums[1]);
+			console.log(nums["1"]);
+			//console.log(nums."1");
+			
+			var cities=[];
+			//cities.bj="北京";
+			//cities["cd"]="成都";
+			
+			//console.log(cities["bj"]);
+			//console.log(cities.cd);
+			cities.北京=["海淀","朝阳"];
+			cities["成都"]=["青羊","武侯"];
+			
+			for(var p in cities){
+				for(var area in cities[p]){
+					console.log(cities[p][area]);
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

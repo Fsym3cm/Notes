@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var num = 10;
+
+			function test() {
+				alert("test");
+			}
+			//alert(window.test());
+			//alert(window.screenX + "," + window.screenY);
+			//alert(screenTop + "," + screenLeft);
+		</script>
+	</head>
+
+	<body>
+		<input type="" name="username" id="location" value="" />
+		<button id="cfm">确认</button>
+		<button id="prop">输入</button>
+		<button id="print">打印</button>
+		<button id="open">打开</button>
+		<script type="text/javascript">
+			//alert(window.location);
+			varcfm=document.getElementById("cfm");
+			cfm.addEventListener("click",function(){
+				if(confirm("确认吗?")){
+					alert("ok");
+				}else{
+					alert("no");
+				}
+			})
+			var prop=document.getElementById("prop");
+			prop.addEventListener("click",function(){
+				var info= prompt("请输入信息","默认值");
+				alert(info);
+			})
+			var printbtn=document.getElementById("print");
+			printbtn.addEventListener("click",function(){
+				print();
+			})
+			var openbtn=document.getElementById("open");
+			openbtn.addEventListener("click",function(){
+				open("http://www.baidu.com","","width=400,height=300");
+			})
+			
+			function test1(){
+				console.log("one");
+				setTimeout(test1,1000);
+			}
+			
+			//setTimeout(test1,1000);
+			
+			setInterval(function(){
+				console.log("two");
+			},1000);
+		</script>
+		
+	</body>
+
+</html>

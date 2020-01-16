@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//"use strict"
+			num1=10;
+			console.log(num1);
+			
+			function User(){
+				this.name="老谭";
+			}
+			
+			var user1=new User();
+			User();
+			
+			function f1(){
+				console.log(f1.caller+","+f1.callee+","+f1.arguments);
+			}
+			f1();
+			var User={
+				name:"laotan",
+				name:"老谭"
+			}
+			function f1(num,num){
+				return num+num;
+			}
+			console.log(f1(1,2));
+			if(true){
+				function f1(){
+					
+				}
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var obj1=new Object();
+			obj1.name="老谭";
+			obj1.address="成都";
+			
+			var obj2=new Object("laotan");
+			console.log(obj2 instanceof String);
+			console.log(obj2.constructor);
+			
+			console.log(obj1.hasOwnProperty("name"));
+			function User(){
+				
+			}
+			User.prototype=obj1;
+			var user=new User();
+			console.log(obj1.isPrototypeOf(user));
+			
+			console.log(obj1.propertyIsEnumerable("address"));
+			
+			console.log(obj1.toString());
+			console.log(obj1);
+			console.log(obj2.valueOf());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

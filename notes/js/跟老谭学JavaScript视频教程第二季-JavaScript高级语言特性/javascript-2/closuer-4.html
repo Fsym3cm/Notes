@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function test(){
+				var funs=[];
+				for(var i=0;i<5;i++){
+					funs[i]=(function(num){
+						return function(){
+							return num;
+						}
+					})(i);
+				}
+				return funs;
+			}
+
+			for(var i=0;i<5;i++){
+				console.log(test()[i]());
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

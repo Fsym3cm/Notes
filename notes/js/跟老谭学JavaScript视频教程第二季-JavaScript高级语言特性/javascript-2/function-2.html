@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(num1,num2){
+				console.log(num1+num2);
+			}
+			console.log(f1.length);
+			
+			f1.apply(null,[1,2]);
+			f1.call(null,1,2);
+			
+			var user={
+				num1:10,
+				num2:20
+			}
+			function f2(num3){
+				console.log(this.num1+this.num2+num3);
+			}
+			f2.apply(user,[30]);
+			f2.call(user,30);
+			
+			function f3(num1,num2){
+				console.log(num1+num2);
+			}
+			
+			var f4=f3.bind(null,1);
+			f4(2);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+body {
+  background: #cfcfcf;
+}
+
+#container, #water {
+  background-image: url("http://www.jq22.com/tp/6370306692130648877851050.jpg");
+  background-position: center bottom;
+}
+
+#container {
+  position: absolute;
+  top: calc(50% - 206px);
+  left: calc(50% - 275px);
+  height: 412px;
+  width: 550px;
+}
+#container:after {
+  position: absolute;
+  top: 10%;
+  left: 2.5%;
+  z-index: -1;
+  content: '';
+  display: block;
+  height: 95%;
+  width: 95%;
+  background: #0f0f0f;
+  -webkit-filter: blur(30px);
+          filter: blur(30px);
+}
+#container #water {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 66%;
+  -webkit-filter: url("#turbulence");
+          filter: url("#turbulence");
+  overflow: hidden;
+}
+
+#codepen-link {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  height: 40px;
+  width: 40px;
+  z-index: 10;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/544318/logo.jpg");
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.5;
+  transition: all 0.25s;
+}
+#codepen-link:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 6px #0c0c0c;
+}

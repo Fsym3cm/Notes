@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//"use strict"
+			function add(num1,num2){
+				if(arguments.length==1){
+					console.log("一个参数");
+				}else{
+					console.log("不是一个参数");
+				}
+				//console.log(arguments.length);
+				//console.log(arguments.callee);
+			}
+			add(1);
+			
+			function f(num){
+				if(num==1){
+					return 1;
+				}else{
+					return num*arguments.callee(num-1);
+				}
+			}
+			console.log(f(4));
+			var f1=f;
+			f=null;
+			console.log(f1(4));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

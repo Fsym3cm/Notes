@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function User(name){
+				this.name=name;
+			}
+			
+			User.prototype.getName=function(){
+				return this.name;
+			}
+			
+			User.test=function(num){
+				return num*2;
+			}
+			
+			var user1=new User("老谭");
+			console.log(user1.name);
+			console.log(user1.getName());
+			console.log(User.test(10));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

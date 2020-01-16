@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(){
+				console.log("函数");
+			}
+			f1();
+			var f2=function(){
+				console.log("函数2");
+			}
+			f2();
+			
+			var f3=f1;
+			console.log(f3);
+			f3();
+			
+			function f4(f,num1,num2){
+				f(num1,num2);
+			}
+			function add(num1,num2){
+				console.log(num1+num2);
+			}
+			f4(add,2,3);
+			
+			function f5(){
+				function f6(){
+					console.log("函数6");
+				}
+				return f6;
+			}
+			f5()();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

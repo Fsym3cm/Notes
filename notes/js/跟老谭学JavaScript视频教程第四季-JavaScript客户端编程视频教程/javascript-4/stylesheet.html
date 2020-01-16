@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			P{
+				color:red;
+			}
+			div{
+				color:blue;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/hello.css" id="style1"/>
+	</head>
+	<body>
+		<p>段落</p>
+		<div>
+			我是老谭!
+		</div>
+		<button id="change">换皮肤</button>
+		<script type="text/javascript">
+			var styleSheets=document.styleSheets;
+			//alert(styleSheets[0].cssRules[1].cssText);
+			//styleSheets[0].disabled=true;
+			//styleSheets[0].insertRule("p{font-size:30px}",0);
+			styleSheets[0].deleteRule(0);
+			var change=document.getElementById("change");
+			change.addEventListener("click",function(){
+				//styleSheets[1].href="css/hello2.css";
+				document.getElementById("style1").href="css/hello2.css";
+			})
+		</script>
+	</body>
+</html>

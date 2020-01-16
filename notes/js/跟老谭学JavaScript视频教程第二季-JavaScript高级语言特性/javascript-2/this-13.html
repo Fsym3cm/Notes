@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(){
+				console.log(this.num);
+			}
+			var obj1={
+				num:1,
+				f:f1
+			}
+			var obj2={
+				num:2
+			}
+			obj1.f();
+			//(obj2.f=obj1.f)();
+			obj2.f=obj1.f;
+			obj2.f();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var obj1 = {
+				id: 1,
+				name: "老谭"
+			}
+
+			var obj2 = Object.create(obj1,{
+				age:{
+					value:20,
+					writable:true,
+					enumerable:true
+				},
+				address:{
+					value:"成都",
+					writable:true,
+					enumerable:false
+				}
+			});
+			console.log(obj1.isPrototypeOf(obj2));
+			for(var p in obj2){
+				console.log(p);
+			}
+			console.log(Object.getOwnPropertyDescriptor(obj2,"address").enumerable);
+			var pnames=Object.getOwnPropertyNames(obj2);
+			for(var p in pnames){
+				console.log(pnames[p]);
+			}
+			console.log(Object.getPrototypeOf(obj2));
+			var pnames2=Object.keys(obj2);
+			for(var p in pnames2){
+				console.log(pnames2[p]);
+			}
+			console.log("-------------------------");
+			var obj3={
+				id:2,
+				name:"laotan"
+			}
+			obj3.address="成都";
+			console.log(obj3.address);
+			Object.freeze(obj3);
+			obj3.age=20;
+			console.log(obj3.age);
+			obj3.address="武汉";
+			console.log(obj3.address);
+			console.log(Object.isFrozen(obj3));
+			
+			var obj4={
+				id:4,
+				name:"laotan"
+			}
+			Object.seal(obj4);
+			obj4.name="老谭";
+			console.log(obj4.name);
+			delete obj4.name;
+			console.log(obj4.name);
+			console.log(Object.isSealed(obj4));
+			
+			var obj5={
+				id:5,
+				name:"laotan"
+			}
+			Object.preventExtensions(obj5);
+			console.log(Object.isExtensible(obj5));
+			obj5.address="成都";
+			console.log(obj5.address);
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

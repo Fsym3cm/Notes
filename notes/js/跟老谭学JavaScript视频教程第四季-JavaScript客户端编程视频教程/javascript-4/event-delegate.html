@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="cities">
+			<li>北京</li>
+			<li>上海</li>
+			<li>成都</li>
+		</ul>
+		<script type="text/javascript">
+			document.getElementById("cities").addEventListener("click",function(e){
+				alert(e.target.innerText);
+			})
+		</script>
+	</body>
+</html>

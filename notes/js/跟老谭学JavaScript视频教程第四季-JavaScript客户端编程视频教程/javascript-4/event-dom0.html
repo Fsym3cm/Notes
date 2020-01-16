@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn1" />
+		<input type="button" value="取消" id="btn2" />
+		<script type="text/javascript">
+			var btn1=document.getElementById("btn1");
+			btn1.onclick=function(){
+				alert("test");
+			}
+			var btn2=document.getElementById("btn2");
+			btn2.onclick=function(){
+				btn1.onclick=null;
+			}
+		</script>
+	</body>
+</html>

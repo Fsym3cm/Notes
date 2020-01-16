@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<button id="createul">创建无序列表</button>
+		<button id="createli">创建列表项</button>
+		<button id="cloneul">克隆无序列表</button>
+		<button id="replaceli">替换列表项</button>
+		<button id="deleteli">删除列表项</button>
+		<script type="text/javascript">
+//			var allli=document.getElementsByClassName("class1");
+//			for(var i=0;i<allli.length;i++){
+//				allli.addEventListener("click",function(){
+//					alert(this.innerText);
+//				})
+//			}
+			document.body.addEventListener("click",function(event){
+				if(event.target.className=="class1"){
+					alert(event.target.innerText);
+				}
+			})
+			var createul=document.getElementById("createul");
+			createul.addEventListener("click",function(){
+				var newUL=document.createElement("ul");
+				newUL.id="newul";
+				var newLI1=document.createElement("li");
+				newLI1.className="class1";
+				var name1=document.createTextNode("Tom");
+				var newLI2=document.createElement("li");
+				newLI2.className="class1";
+				var name2=document.createTextNode("Jack");
+				
+				newLI1.appendChild(name1);
+				newLI2.appendChild(name2);
+				
+				var df=document.createDocumentFragment();
+				df.appendChild(newLI1);
+				df.appendChild(newLI2);
+				//newUL.appendChild(newLI1);
+				//newUL.appendChild(newLI2);
+				newUL.appendChild(df);
+				
+				document.getElementById("div1").appendChild(newUL);
+			})
+			var cloneul=document.getElementById("cloneul");
+			cloneul.addEventListener("click",function(){
+				var ul=document.getElementById("newul");
+				
+				document.body.appendChild(ul.cloneNode(false));
+			})
+			var createli=document.getElementById("createli");
+			createli.addEventListener("click",function(){
+
+				var newLI1=document.createElement("li");
+				var name1=document.createTextNode("Rose");
+								
+				newLI1.appendChild(name1);
+				var ul=document.getElementById("newul");			
+				ul.insertBefore(newLI1,ul.lastElementChild);
+				
+			})
+			var replaceli=document.getElementById("replaceli");
+			replaceli.addEventListener("click",function(){
+
+				var newLI1=document.createElement("li");
+				var name1=document.createTextNode("老谭");
+								
+				newLI1.appendChild(name1);
+				var ul=document.getElementById("newul");			
+				ul.replaceChild(newLI1,ul.lastElementChild);
+				
+			})
+			var deleteli=document.getElementById("deleteli");
+			deleteli.addEventListener("click",function(){
+
+				var ul=document.getElementById("newul");			
+				ul.removeChild(ul.lastElementChild);
+				
+			})
+		</script>
+	</body>
+</html>

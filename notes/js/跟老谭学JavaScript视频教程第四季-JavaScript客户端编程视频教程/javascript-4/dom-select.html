@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="checkbox" name="sports" />足球
+		<div id="div1">
+			<input type="checkbox" name="sports" />篮球
+			<input type="checkbox" name="sports" />排球
+		</div>
+		<p class="class1 class2"></p>
+		<p class="class1"></p>
+		<script type="text/javascript">
+			var sports=document.getElementsByName("sports");
+			console.log(sports);
+			var sports=document.getElementsByTagName("input");
+			console.log(sports.length);
+			var sports2=document.getElementById("div1").getElementsByTagName("input");
+			console.log(sports2.length);
+			var p = document.getElementsByClassName("class2 class1");
+			console.log(p.length);
+			var div=document.querySelector(".class1");
+			console.log(div)
+			var div=document.querySelectorAll(".class1");
+			console.log(div[0])
+		</script>
+	</body>
+
+</html>

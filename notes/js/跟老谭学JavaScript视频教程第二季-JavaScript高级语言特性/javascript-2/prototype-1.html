@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(){
+				
+			}
+			console.log(Person.prototype);
+			console.log(Person.prototype.constructor);
+			
+			var person1=new Person();
+			var person2=new Person();
+			
+			console.log(person1.__proto__===Person.prototype);
+			
+			Person.prototype.name="老谭";
+			var person3=new Person();
+			console.log(person3.name);
+			console.log(person1.name);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>post.html</title>
+	<meta charset="UTF-8" />
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+     <input type="button" id="post" value="发送POSTT请求" />
+        <input type="button" id="upload" value="发送文件请求" />
+        <input type="file" id="avatar" />
+      <script type="text/javascript">
+    	var post=document.getElementById("post");
+    	post.addEventListener("click", function(){
+    		var xhr=new XMLHttpRequest();
+    		xhr.open("post","post");
+    		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    		xhr.onreadystatechange=function(){
+    			if(xhr.readyState==4 && xhr.status==200){
+        			console.log(xhr.responseText);
+    			}
+
+    		}
+    		xhr.send("name=laotan");
+    	});
+    	
+    	var upload=document.getElementById("upload");
+    	upload.addEventListener("click", function(){
+    		var xhr=new XMLHttpRequest();
+    		xhr.open("post","upload");
+    		//xhr.setRequestHeader("Content-Type", "multipart/form-data");
+    		xhr.onreadystatechange=function(){
+    			if(xhr.readyState==4 && xhr.status==200){
+        			console.log(xhr.responseText);
+    			}
+
+    		}
+    		var formData=new FormData();
+    		var file=document.getElementById("avatar").files[0];
+    		formData.append("avatar",file);
+    		xhr.send(formData);
+    	});
+    	</script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" name="" id="username" />
+		<script type="text/javascript">
+			//			document.getElementById("username").addEventListener("input", function() {
+			//				console.log(document.getElementById("username").value);
+			//			})
+			//			document.getElementById("username").addEventListener("textInput", function(e) {
+			//				console.log(document.getElementById("username").value);
+			//				console.log(e.data);
+			//			})
+			document.getElementById("username").addEventListener("select", function(e) {
+				//				console.log(document.getElementById("username").value);
+				//				console.log(e.data);
+				console.log("select");
+				console.log(e.target.value.substring(e.target.selectionStart, e.target.selectionEnd));
+			})
+		</script>
+	</body>
+
+</html>

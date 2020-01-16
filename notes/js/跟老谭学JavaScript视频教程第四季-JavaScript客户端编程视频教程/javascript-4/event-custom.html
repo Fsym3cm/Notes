@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn1">按钮</button>
+		<script type="text/javascript">
+			var btn1=document.getElementById("btn1");
+			btn1.addEventListener("myEvent",function(event){
+				alert("MyEvent");
+				alert(event.detail);
+			});
+			
+			var myEvent=document.createEvent("CustomEvent");
+			myEvent.initCustomEvent("myEvent",true,true,"Hello");
+			btn1.dispatchEvent(myEvent);
+		</script>
+	</body>
+</html>

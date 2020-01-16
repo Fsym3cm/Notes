@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+				var obj1={
+					num:1
+				};
+				function f1(obj1){
+					try{
+						console.log(obj1.num);
+					}catch(error){
+						console.log(error.name+":"+error.message);
+					}finally{
+						console.log("都要执行");
+					}
+				}
+				f1(null);
+				console.log("hello");
+				
+				function f2(){
+					try{
+						return 1;
+					}catch(error){
+						return 2;
+					}finally{
+						return 3;
+					}
+				}
+				console.log(f2());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

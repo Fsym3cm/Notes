@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function Parent(){
+				this.name="Parent";
+				this.getName=function(){
+					return this.name;
+				}
+			}
+			
+			function Son(){
+				
+			}
+			
+			function GrandSon(){
+				
+			}
+			
+			Son.prototype=new Parent();
+			GrandSon.prototype=new Son();
+			
+			var son1=new Son();
+			console.log(son1.name);
+			console.log(son1.getName());
+			
+			var grandSon1=new GrandSon();
+			console.log(grandSon1.name);
+			
+			console.log(grandSon1 instanceof GrandSon);
+			console.log(grandSon1 instanceof Son);
+			console.log(grandSon1 instanceof Parent);
+			console.log(grandSon1 instanceof Object);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

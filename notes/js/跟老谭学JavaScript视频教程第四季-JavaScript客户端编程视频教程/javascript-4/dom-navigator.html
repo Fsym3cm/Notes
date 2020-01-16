@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="parent">
+			<ul id="names">
+				<li>Tom</li>
+				<li>Jack</li>
+				<li>Rose</li>
+			</ul>
+			<ul id="names2">
+				<li>Tom</li>
+				<li>Jack</li>
+				<li>Rose</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var names = document.getElementById("names");
+			console.log(names.parentNode.id);
+			var child = names.childNodes;
+				for(var i = 0; i < child.length; i++) {
+					console.log(child[i].nodeType);
+				}
+			console.log(names.nextSibling.nextSibling);
+			var child = names.children;
+				for(var i = 0; i < child.length; i++) {
+					console.log(child[i].innerText);
+				}
+			console.log(names.nextElementSibling);
+		</script>
+	</body>
+
+</html>

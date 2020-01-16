@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="text" name="txt" id="txt" value="" /><br />
+			<input type="text" name="pwd" id="txt" value="" />
+			<input type="button" value="提交"/>
+		</form>
+		
+		<script type="text/javascript">
+//			document.getElementById("txt").attachEvent("onkeydown",function(event){
+//				//console.log("keydown");
+//				//console.log(e.keyCode)
+//				if(event.keyCode==13){
+//					event.keyCode=9;
+//				}
+//			})
+			document.getElementById("txt").addEventListener("keydown",function(event){
+				//console.log("keydown");
+				//console.log(e.keyCode)
+				if(event.keyCode==13){
+					//event.keyCode=9;
+					event.target.nextElementSibling.nextElementSibling.focus();
+				}
+			})
+			document.getElementById("txt").addEventListener("keypress",function(e){
+				console.log("keypress");
+				console.log(e.keyCode,e.key,e.location);
+			})
+//			document.getElementById("txt").addEventListener("keyup",function(){
+//				console.log("keyup");
+//			})
+		</script>
+	</body>
+</html>

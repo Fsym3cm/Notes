@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				color:red;
+			}
+			#div1:first-letter{
+				color:black
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			Hello
+		</div>
+		<script type="text/javascript">
+			var div1=document.getElementById("div1");
+			//div1.setAttribute("style","width:100px;height:100px;border:1px solid red");
+			
+			var divStyle=div1.style;
+			//alert(divStyle.width);
+			divStyle.width="50%";
+			divStyle.height="100px";
+			divStyle.border="1px solid red";
+			divStyle.backgroundColor="yellow";
+			divStyle.cssFloat="right";
+			
+			//alert(divStyle.color);
+			
+			var computedStyle=window.getComputedStyle(div1,":first-letter");
+			console.log(computedStyle.width);
+		</script>
+	</body>
+</html>

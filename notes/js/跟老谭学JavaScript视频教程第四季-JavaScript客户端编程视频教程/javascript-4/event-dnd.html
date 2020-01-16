@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#src{
+				width:100px;
+				height:100px;
+				border:1px red solid;
+			}
+			#target{
+				width:200px;
+				height:200px;
+				border:1px blue solid;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="src" draggable="true"></div>
+		<div id="target"></div>
+		<script type="text/javascript">
+			var src=document.getElementById("src");
+			var target=document.getElementById("target");
+			
+			src.addEventListener("dragstart",function(event){
+				event.dataTransfer.setData("Text","Hello Laotan!");
+			})
+			
+			target.addEventListener("dragover",function(event){
+				event.preventDefault();
+			})
+			target.addEventListener("drop",function(event){
+				target.appendChild(src);
+				var info=event.dataTransfer.getData("Text");
+				alert(info)
+			})
+		</script>
+	</body>
+</html>

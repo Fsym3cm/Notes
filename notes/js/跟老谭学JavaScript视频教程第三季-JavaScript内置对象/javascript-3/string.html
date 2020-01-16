@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var s1 = new String();
+			var s2 = new String("老谭");
+			var s3 = new String(1);
+			var s4 = "laotan";
+			
+			console.log(s1.length);
+			console.log(s2.length);
+			for(var p in s2){
+				console.log(p+":"+s2[p]);
+			}
+			var s5="abcdefghDeijk";
+			console.log(s5.charAt(2));
+			console.log(s5.charAt(-2));
+			console.log(s5.concat("abc",true));
+			console.log(s5.indexOf("de",5));
+			console.log(s5.lastIndexOf("de"));
+			console.log(s5.match(/de/gi));
+			console.log(s5.replace(/de/gi,"one"));
+			console.log(s5);
+			console.log(s5.search(/de/gi,"de"));
+			console.log(s5.split("e"));
+			console.log(s5.split(/de/gi));
+			console.log(s5.substr(2,5));
+			console.log(s5.substring(2,5));
+			console.log(s5.substring(2));
+			console.log(s5.substring(-2));
+			console.log(s5.toLowerCase());
+			console.log(s5.toUpperCase());
+			console.log("   abc   ".trim())
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

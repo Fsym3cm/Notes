@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="http://www.baidu.com" id="a1">百度</a>
+		<script type="text/javascript">
+			function getEvent(event){
+				return event?event:window.event;
+			}
+			function getTarget(event){
+				if(event.target){
+					return event.target;
+				}else{
+					return event.srcElement;
+				}
+			}
+			function preventDegault(event){
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnValue=false;
+				}
+			}
+			//document.getElementById("a1").attachEvent("onclick",function(){
+			//	alert(event.cancelBubble+","+event.returnValue+","+event.srcElement+","+event.type);
+			//	event.returnValue=false;
+			//})
+			document.getElementById("a1").onclick=function(event){
+				var e=getEvent(event);
+				preventDegault(e);
+			}
+		</script>
+	</body>
+</html>

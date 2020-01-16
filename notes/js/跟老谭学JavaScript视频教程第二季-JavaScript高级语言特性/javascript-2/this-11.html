@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(){
+				console.log(this.num);
+			}
+			function f2(f){
+				f();
+			}
+			var obj1={
+				num:1,
+				f:f1
+			}
+			obj1.f();
+			f2(obj1.f);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

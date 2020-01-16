@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function f1(num1){
+				function f2(num1){
+					console.log(num1+num1);
+				}
+				return f2;
+			}
+			var f3=f1(10);
+			f3(15);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#outer{
+				border:1px solid red
+			}
+			#inner{
+				border:1px solid black
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outer" onclick="alert('outer')">
+			<p>Outer</p>
+			<div id="inner" onclick="alert('inner')">
+				Inner
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.class1{
+				width: 100px;
+				height: 100px;
+				border:1px solid red;
+			}
+			.class2{
+				background: yellow;
+			}
+			.class3{
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			Hello!
+		</div>
+		<button id="addClass">增加类样式</button>
+		<button id="removeClass">移除类样式</button>
+		<button id="toggleClass">切换类样式</button>
+		<script type="text/javascript">
+			var div1=document.getElementById("div1");
+			//div1.setAttribute("class","class1");
+			div1.className="class1 class2";
+		
+			var addClass=document.getElementById("addClass");
+			addClass.addEventListener("click",function(){
+				div1.classList.add("class3");
+			})
+			var removeClass=document.getElementById("removeClass");
+			removeClass.addEventListener("click",function(){
+				div1.classList.remove("class2");
+			})
+			var toggleClass=document.getElementById("toggleClass");
+			toggleClass.addEventListener("click",function(){
+				div1.classList.toggle("class2");
+			})
+			console.log(div1.classList.contains("class3"));
+		</script>
+	</body>
+</html>

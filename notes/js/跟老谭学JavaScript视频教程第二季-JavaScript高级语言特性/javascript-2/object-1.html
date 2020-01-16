@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var user={
+				1:"one",
+				'1a':"",
+				name:"老谭",
+				address:{
+					province:"四川",
+					city:"成都"
+				},
+				birthdate:"1999-1-1",
+				getInfo:function(){
+					console.log(this.name);
+				},
+			};
+			console.log(user["name"]);
+			console.log(user.address.province);
+			user.getInfo();
+			console.log(user["1"]);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width:200px;
+				height:200px;
+				border:1px red solid
+			}
+		</style>
+		<script type="text/javascript">
+			window.addEventListener("load",function(){
+				var btn=document.getElementById("btn");
+				btn.addEventListener("click",function(){
+					alert("click");
+				})
+				document.getElementById("div1").addEventListener("mouseover",function(){
+					console.log("mouseover");
+				})
+				document.getElementById("div1").addEventListener("mouseout",function(){
+					console.log("mouseout");
+				})
+				document.getElementById("div1").addEventListener("mousemove",function(){
+					console.log("mousemove");
+				})
+			})
+			window.addEventListener("contextmenu",function(e){
+				alert("contextmenu");
+				alert(e.clientX+","+e.clientY);
+				alert(e.pageX+","+e.pageY);
+				alert(e.screenX+","+e.screenY);
+				e.preventDefault();
+			})
+		</script>
+	</head>
+	<body>
+		<button id="btn">按钮</button>
+		<div id="div1"></div>
+	</body>
+</html>

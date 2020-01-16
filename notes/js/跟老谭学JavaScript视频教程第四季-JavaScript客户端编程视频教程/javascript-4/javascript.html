@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var js=document.createElement("script");
+			js.type="text/javascript";
+			js.src="js/hello.js";
+			document.body.appendChild(js);
+			
+			var js2=document.createElement("script");
+			js2.type="text/javascript";
+			//js2.text="alert('你好')";
+
+			js2.appendChild(document.createTextNode("console.log('你好')"))
+			document.body.appendChild(js2);
+		</script>
+	</body>
+</html>

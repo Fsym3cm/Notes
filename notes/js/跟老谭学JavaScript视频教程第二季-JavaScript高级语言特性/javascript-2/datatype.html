@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var num1=10;
+			var num2=num1;
+			num1++;
+			console.log(num2);
+			
+			var user={
+				age:20
+			}
+			var user2=user;
+			user.age=30;
+			console.log(user2.age);
+			
+			function test1(num){
+				num++;
+			}
+			var a=10;
+			test1(a);
+			console.log(a);
+			
+			function test2(u){
+				u.age++;
+			}
+			test2(user);
+			console.log(user.age);
+			
+			var name="laotan";
+			console.log("老谭".length); //String
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

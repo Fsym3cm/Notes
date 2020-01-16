@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var a1 = [1, 2, 3, 4, 5];
+			a1.forEach(function(e, index, a) {
+				console.log(e + "," + index + "," + a);
+				//a[index]++;
+				e++;
+			});
+			console.log(a1);
+			var a2 = [2, 4, 6];
+			console.log(a2.every(function(e) {
+				return e % 2 == 0
+			}));
+			console.log(a2.some(function(e) {
+				return e > 6;
+			}));
+
+			var a3 = [1, 2, 3, 4, 5];
+			console.log(a3.filter(function(e) {
+				return e % 2 == 0;
+			}));
+			var a4 = [1, 2, 3, 4, 5];
+			console.log(a4.map(function(e) {
+				return e * 10;
+			}));
+			console.log(a4);
+			console.log(a4.reduce(function(x, y) {
+				return x - y;
+			}));
+			console.log(a4.reduceRight(function(x, y) {
+				return x - y;
+			}));
+			var a5 = [1, 2, 3, 4, 6, 1, 2, 3, 1, 2];
+			console.log(a5.indexOf(2, 3));
+			console.log(a5.lastIndexOf(2));
+			console.log(a5.lastIndexOf("2"));
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

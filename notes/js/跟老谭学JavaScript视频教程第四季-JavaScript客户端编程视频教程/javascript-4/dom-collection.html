@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="checkbox" name="sports" />足球
+		<input type="checkbox" name="sports" />篮球
+		<input type="checkbox" name="sports" />排球
+		<input type="button" value="删除" id="delBtn"/>
+		<script type="text/javascript">
+			var delBtn=document.getElementById("delBtn");
+			delBtn.addEventListener("click",function(){
+				var sports=document.getElementsByName("sports");
+				for(var i=0;i<sports.length;i++){
+					if(sports[i].checked){
+						
+						document.body.removeChild(sports[i].nextSibling);
+						document.body.removeChild(sports[i]);
+						i--;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

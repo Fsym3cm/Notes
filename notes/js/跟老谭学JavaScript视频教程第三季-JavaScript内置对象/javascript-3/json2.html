@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var data={
+				id:1,
+				gender:1,
+				name:"laotan",
+				address:"成都"
+			};
+			console.log(JSON.stringify(data));
+			console.log(JSON.stringify(data,["name","address"]));
+			console.log(JSON.stringify(data,["name","address"],4));
+			console.log(JSON.stringify(data,function(k,v){
+				console.log(k+","+v);
+				if(k=="gender"){
+					if(v==1){
+						return "男";
+					}else{
+						return "女";
+					}
+				}
+				return v;
+			}));
+			
+			var names=["Tom","Jack","Rose"];
+			console.log(names);
+			console.log(JSON.stringify(names));
+			console.log(JSON.stringify(names,["1"]));
+			console.log(JSON.stringify(names,function(k,v){
+				console.log(k+","+v);
+				if(k==1){
+					return v+"test";
+				}
+				return v;
+			},4));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

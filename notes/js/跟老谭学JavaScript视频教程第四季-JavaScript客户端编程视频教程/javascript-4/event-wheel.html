@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.addEventListener("load", function() {
+				document.getElementById("img1").addEventListener("wheel", function(e) {
+					if(e.wheelDelta > 0) {
+						document.getElementById("img1").width += 10;
+						document.getElementById("img1").height += 5;
+					}else{
+						document.getElementById("img1").width -= 10;
+						document.getElementById("img1").height -= 5;
+					}
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<img src="img/logo.jpg" width="100px" height="60px" id="img1" />
+	</body>
+
+</html>

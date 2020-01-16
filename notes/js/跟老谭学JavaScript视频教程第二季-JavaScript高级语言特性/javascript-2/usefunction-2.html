@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function test1(f1,f2){
+				return f1()+f2();
+			}
+			
+			function f1(){
+				return 1;
+			}
+			
+			function f2(){
+				return 2;
+			}
+			
+			console.log(test1(function(){
+				return 1;
+			},function(){
+				return 2;
+			}));
+			
+			(function(num){
+				//var num=10;
+				console.log("iife"+num);
+			})(20);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

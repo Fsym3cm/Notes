@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="http://www.baidu.com" id="form1" method="post">
+			<input type="text" name="" id="username" value="laotan"/>
+			<select name="" id="num">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<input type="submit" value="提交"/>
+			<input type="reset" value="重置"/>
+		</form>
+		<script type="text/javascript">
+			var form1=document.getElementById("form1");
+			form1.addEventListener("submit",function(e){
+				//return false;
+				e.preventDefault();
+			})
+			form1.addEventListener("reset",function(e){
+				//return false;
+				e.preventDefault();
+			})
+			var username=document.getElementById("username");
+			username.addEventListener("change",function(){
+				console.log(username.value);
+			})
+			var num=document.getElementById("num");
+			num.addEventListener("change",function(){
+				console.log(num.value);
+			})
+			
+		</script>
+	</body>
+</html>

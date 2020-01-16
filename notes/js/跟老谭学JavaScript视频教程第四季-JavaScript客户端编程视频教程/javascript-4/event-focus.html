@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="txt1" />
+		<input type="text" name="" id="txt2" />
+		<script type="text/javascript">
+			var txt2=document.getElementById("txt2");
+			txt2.addEventListener("focus",function(){
+				console.log("focus");
+			})
+			txt2.addEventListener("blur",function(){
+				console.log("blur");
+				console.log(txt2.value);
+			})
+		</script>
+	</body>
+</html>

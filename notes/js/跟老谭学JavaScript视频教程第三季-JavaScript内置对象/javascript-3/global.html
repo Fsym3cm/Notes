@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			console.log(Infinity);
+			console.log(NaN);
+			
+			console.log(escape("Hello,老谭*/"));
+			console.log(unescape("Hello%2C%u8001%u8C2D*/"));
+			
+			console.log(encodeURI("http://www.baidu.com?wd=老谭"));
+			console.log(decodeURI("http://www.baidu.com?wd=%E8%80%81%E8%B0%AD"));
+		
+			console.log(encodeURIComponent("http://www.baidu.com?wd=老谭&p=你好"));
+			console.log(decodeURIComponent("http%3A%2F%2Fwww.baidu.com%3Fwd%3D%E8%80%81%E8%B0%AD%26p%3D%E4%BD%A0%E5%A5%BD"))
+		
+			eval("var a=10;");
+			console.log(a);
+			
+			console.log(isFinite(10/0));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

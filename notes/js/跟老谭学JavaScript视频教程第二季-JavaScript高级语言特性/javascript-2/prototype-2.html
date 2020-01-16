@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(){
+				
+			}
+			
+			
+			/*Person.prototype.name="老谭";
+			Person.prototype.getName=function(){
+				return this.name;
+			}*/
+			Person.prototype={
+				name:"laotan",
+				getName:function(){
+					return this.name;
+				}
+			}
+			
+			var person1=new Person();
+			console.log(person1.name);
+			console.log(person1.getName());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="text" name="username" id="username" value="" />
+			<input type="password" name="password" id="password" value="" />
+			<input type="button" value="登录" id="btn"/>
+			<script type="text/javascript">
+				var btn=document.getElementById("btn");
+				btn.addEventListener("click",function(){
+					var username=document.getElementById("username").value;
+					var password=document.getElementById("password").value;
+					document.cookie="username="+username+";max-age=30";
+					document.cookie="password="+password+";max-age=30";
+				})
+				console.log(document.cookie);
+				var cookies=document.cookie.split(";");
+				for(var i=0;i<cookies.length;i++){
+					var cookie=cookies[i];
+					var name=cookie.substring(0,cookie.indexOf("="));
+					var value=cookie.substring(cookie.indexOf("=")+1);
+					console.log(name,value);
+				}
+			</script>
+		</form>
+	</body>
+</html>

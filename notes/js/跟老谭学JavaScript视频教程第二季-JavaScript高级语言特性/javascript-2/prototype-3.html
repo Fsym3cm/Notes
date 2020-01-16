@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(){
+				//this.name="laotan";
+			}
+			
+			Person.prototype.name="老谭";
+			Person.prototype.address="成都";
+			
+			var person1=new Person();
+			console.log(person1.name+","+person1.address);
+			console.log(person1.hasOwnProperty("name"));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
