@@ -1,4 +1,0 @@
-1、运行安装：navicat120_premium_cs_x64.exe
-2、拷贝：《Navicat Premium 12 破解补丁》→《简体中文64位》下的两个文件
-3、粘贴：粘贴到安装目录，默认为"C:\Program Files\PremiumSoft\Navicat Premium 12"
-4、运行Navicat，无弹窗，无过期，已破解

@@ -46,7 +46,7 @@ OO开发范式大致为：划分对象→抽象类→将类组织成为层次化
 
 **重载**是指允许存在多个同名函数，而这些函数的参数表不同（或许参数个数不同，或许参数类型不同，或许两者都不同）。
 
-其实，重载的概念并不属于“面向对象编程”，重载的实现是：编译器根据函数不同的参数表，对同名函数的名称做修饰，然后这些同名函数就成了不同的函数（至少对于编译器来说是这样的）。如，有两个同名函数：`function func(p: integer):integer;` 和 `function func(p: string):integer;` ，那么编译器做过修饰后的函数名称可能是这样的：`int_fun`、`st_func`。对于这两个函数的调用，在编译器间就已经确定了，是静态的（记住：是静态）。也就是说，它们的地址在编译期就绑定了（早绑定），因此，重载和多态无关！真正和多态相关的是“覆盖”。当子类重新定义了父类的虚函数后，父类指针根据赋给它的不同的子类指针，动态（记住：是动态！）的调用属于子类的该函数，这样的函数调用在编译期间是无法确定的（调用的子类的虚函数的地址无法给出）。因此，这样的函数地址是在运行期绑定的（晚绑定）。结论就是：重载只是一种语言特性，与多态无关，与面向对象也无关！引用一句Bruce Eckel的话：“不要犯傻，如果它不是晚绑定，它就不是多态。”
+其实，重载的概念并不属于“面向对象编程”，重载的实现是：编译器根据函数不同的参数表，对同名函数的名称做修饰，然后这些同名函数就成了不同的函数（至少对于编译器来说是这样的）。如，有两个同名函数：`function func(p: integer):integer;` 和 `function func(p: string):integer;` ，那么编译器做过修饰后的函数名称可能是这样的：`int_fun`、`st_func`。对于这两个函数的调用，在编译器间就已经确定了，是静态的（记住：是静态）。也就是说，它们的地址在编译期就绑定了（早绑定），因此，重载和多态无关！真正和多态相关的是“覆盖”。当子类重新定义了父类的虚函数后，父类指针根据赋给它的不同的子类指针，动态（记住：是动态！）的调用属于子类的该函数，这样的函数调用在编译期间是无法确定的（调用的子类的虚函数的地址无法给出）。因此，这样的函数地址是在运行期绑定的（晚绑定）。结论就是：重载只是一种语言特性，与多态无关，与面向对象也无关！引用一句`Bruce Eckel`的话：“不要犯傻，如果它不是晚绑定，它就不是多态。”
 
 那么，多态的作用是什么呢？我们知道，封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）；它们的目的都是为了——代码重用。而多态则是为了实现另一个目的——接口重用！多态的作用，就是为了类在继承和派生的时候，保证使用“家谱”中任一类的实例的某一属性时的正确调用。
 
@@ -152,7 +152,7 @@ public class ClassTest {
 4个轮子的黑色轿车在马路上行驶着
 ```
 
-其中color和numLuntai就称为Car 类的**成员变量**，这个属性能够用来描述一个类的属性，否则，它就应该定义为**局部变量**。
+其中color和`numLuntai`就称为Car 类的**成员变量**，这个属性能够用来描述一个类的属性，否则，它就应该定义为**局部变量**。
 
    例如一个for循环中的i即是局部变量。
 
@@ -212,7 +212,7 @@ publicclass ClassTest {
 3. 局部变量没有默认初始化值
 
 
- 
+
 
   在使用变量时需要遵循的原则为：**就近原则**
 
@@ -674,16 +674,17 @@ Class dogClass = Class.forName("Dog");
 Dog rose = (Dog) dogClass.newInstance();
 ```
 
-用了两种获得Dog的class对象的方式，第一种是类名.class, 第二种是Class.forName("类名")
+用了两种获得Dog的class对象的方式，第一种是类名.class, 第二种是`Class.forName`("类名")
 
-3、第三种：利用**java对象的序列化与反序列化技术**（对象在内存中的分配方式，在本地里保存一份一模一样的，然后再从本地取出来用（这叫反序列化），相当于把一个对象的状态（实例变量）完全保存住了,游戏里经常使用，利用封装类：ObjectOutputStream序列化,ObjectInputStream反序列化。
+3、第三种：利用**Java对象的序列化与反序列化技术**（对象在内存中的分配方式，在本地里保存一份一模一样的，然后再从本地取出来用（这叫反序列化），相当于把一个对象的状态（实例变量）完全保存住了,游戏里经常使用，利用封装类：`ObjectOutputStream`序列化`ObjectInputStream`反序列化。
 
-前提：Java中，该类必须实现接口Serializable（这是一个标记interface）
+前提：Java中，该类必须实现接口`Serializable`（这是一个标记interface）
 
 ```java
 public class CreateFour implements Serializable {
 	
 	public static void main(String args[]) {
+        
 		CreateFour fCreateFour = new CreateFour();
 		ObjectOutputStream objectStream;
 		try {
@@ -707,7 +708,7 @@ public class CreateFour implements Serializable {
 }
 ```
 
- 4、第四种：利用Object下的**native**方法`clone（）`,该类必须实现Cloneable接口，不然`clone（）`时会抛出异常`CloneNotSupportedException` 
+ 4、第四种：利用Object下的**native**方法`clone（）`,该类必须实现`Cloneable`接口，不然`clone（）`时会抛出异常`CloneNotSupportedException` 
 
 ```java
 protected native Object clone() throws CloneNotSupportedException;
@@ -749,7 +750,7 @@ public boolean function (String params){
 
 #### 2.3 构造方法
 
-构造方法作用： 是定义在java类中的一个用来初始化对象的方法，用new+构造方法，创建一个新的对象，并可以给对象中的实例进行赋值。
+构造方法作用： 是定义在Java类中的一个用来初始化对象的方法，用new+构造方法，创建一个新的对象，并可以给对象中的实例进行赋值。
 
 **语法规则**：
 
@@ -844,11 +845,11 @@ public class MyClass {
    }
    ```
 
-   ​       在 Worker 类中定义了两个属性，其中 name 属性不可改变。分别定义了带有一个参数和带有两个参数的构造方法，并对其属性进行初始化。最后定义了该类的 toString() 方法，返回一条新进员工的介绍语句。
+   ​       在 Worker 类中定义了两个属性，其中 name 属性不可改变。分别定义了带有一个参数和带有两个参数的构造方法，并对其属性进行初始化。最后定义了该类的 `toString()` 方法，返回一条新进员工的介绍语句。
 
    ​       提示：Object 类具有一个 `toString()` 方法，该方法是个特殊的方法，创建的每个类都会继承该方法，它返回一个 String 类型的字符串。如果一个类中定义了该方法，则在调用该类对象时，将会自动调用该类对象的 `toString()` 方法返回一个字符串，然后使用 `System.out.println(对象名)` 就可以将返回的字符串内容打印出来。
 
-2. 在 TestWorker 类中创建 main() 方法作为程序的入口处，在 main() 方法中调用不同的构造方法实例化 Worker 对象，并对该对象中的属性进行初始化，代码如下： 
+2. 在 `TestWorker` 类中创建 main() 方法作为程序的入口处，在 main() 方法中调用不同的构造方法实例化 Worker 对象，并对该对象中的属性进行初始化，代码如下： 
 
    2. 
 
@@ -903,7 +904,7 @@ public class TestDemo{
 
 #### 2.7 this关键字
 
-当一个对象创建后，Java虚拟机（JVM）就会给这个对象分配一个引用自身的指针，这个指针的名字就是 this。
+当一个对象创建后，Java虚拟机（`JVM`）就会给这个对象分配一个引用自身的指针，这个指针的名字就是 this。
 
 因此，this只能在类中的非静态方法中使用，静态方法和静态的代码块中绝对不能出现this，并且this只和特定的对象关联，而不和类关联，同一个类的不同对象有不同的this。
 
@@ -1054,11 +1055,11 @@ public class Baby{
 
 这样就符合逻辑了。自己的eat方法，还需要自己的一个wakeup方法。
 
-**java允许同一个对象的方法直接调用该对象的属性或者方法，所以this可以省略。**
+**Java允许同一个对象的方法直接调用该对象的属性或者方法，所以this可以省略。**
 
  
 
-**注意：java中为什么在static中不能使用this关键字**
+**注意：Java中为什么在static中不能使用this关键字**
 
    Static方法是类方法，先于任何的实例（对象）存在。即Static方法在类加载时就已经存在了，但是对象是在创建时才在内存中生成。而this指代的是当前的对象
 
@@ -1100,13 +1101,13 @@ public class Baby{
 
 (3) **不可触及状态**：当 Java 虚拟机执行完所有可复活对象的 finalize() 方法后，如果这些方法都没有使该对象转到可触及状态，垃圾回收器才会真正回收它占用的内存。
 
-注意：调用 System.gc() 或者 Runtime.gc() 方法也不能保证回收操作一定执行，它只是提高了 Java 垃圾回收器尽快回收垃圾的可能性。
+注意：调用 `System.gc()` 或者 `Runtime.gc()` 方法也不能保证回收操作一定执行，它只是提高了 Java 垃圾回收器尽快回收垃圾的可能性。
 
 ## 三： 继承与多态 
 
 #### 3.1  Java中的继承 
 
-继承是java面向对象编程技术的一块基石，因为它允许创建分等级层次的类。
+继承是Java面向对象编程技术的一块基石，因为它允许创建分等级层次的类。
 
 继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。
 
@@ -1452,22 +1453,20 @@ class Cat extends Animal
 	}
 }
  
-class Dog extends Animal
-{
-	public void eat()
-	{
+class Dog extends Animal{
+    
+	public void eat(){
 		System.out.println("吃骨头");
 	}
-	public void kanJia()
-	{
+    
+	public void kanJia(){
 		System.out.println("看家");
 	}
 }
  
-class DuoTaiDemo
-{
-	public static void main(String[] args)
-	{
+class DuoTaiDemo{
+    
+	public static void main(String[] args){
 		function(new Cat());
 		function(new Dog());
 		
@@ -1476,22 +1475,17 @@ class DuoTaiDemo
 		
 		Cat c = (Cat)a;//向下转型
 		c.catchMouse();
-		
-		
 	}
 	
-	public static void function(Animal a)
-	{
+	public static void function(Animal a){
+        
 		a.eat();
 		//用于子类型有限
 		//或判断所属类型进而使用其特有方法
-		if(a instanceof Cat)
-		{
+		if(a instanceof Cat){
 			Cat c = (Cat)a;
 			c.catchMouse();
-		}
-		else if(a instanceof Dog)
-		{
+		} else if(a instanceof Dog){
 			Dog c = (Dog)a;
 			c.kanJia();
 		}
@@ -1504,7 +1498,7 @@ class DuoTaiDemo
 
 #### 3.7引用类型转换 
 
-java的引用类型转换分为两种：
+Java的引用类型转换分为两种：
 
 1. 向上类型转换，是小类型到大类型的转换
 2. 向下类型转换，是大类型到小类型的转换
@@ -1572,7 +1566,7 @@ public class Dog extends Animal {
 */         
 if(cat2 instanceof Dog) {
     Dog dog = (Dog)cat2;
-}else {
+} else {
     System.out.println("并不能转换");
 }
 ```
@@ -1619,10 +1613,10 @@ abstract class LeagueOfLegendsPlayer {
     private String name = "Uzi";
     public String getName(){
         return name;
-}
+    }
     public void setName(String name){
         this.name = name;
-}
+    }
     public abstract print();
 }
 ```
@@ -1706,20 +1700,20 @@ public interface IStudent {
 **implements 接口列表：**可选参数，用于指定该类实现的是哪些接口。当使用implements关键字时，接口列表为必选参数。当接口列表中存在多个接口名时，各个接口名之间使用逗号分隔。
 
 ```java
-public class Cire implements CalInterface   
-{  
-    public float getArea(float r)   
-    {  
+public class Cire implements CalInterface{  
+    
+    public float getArea(float r){
+        
         float area=PI*r*r;//计算圆面积并赋值给变量area  
         return area;//返回计算后的圆面积  
     }  
-    public float getCircumference(float r)   
-    {  
+    public float getCircumference(float r){  
+      
         float circumference=2*PI*r;      //计算圆周长并赋值给变量circumference  
         return circumference;           //返回计算后的圆周长  
     }  
-    public static void main(String[] args)   
-    {  
+    public static void main(String[] args){  
+        
         Cire c = new Cire();  
         float f = c.getArea(2.0f);  
         System.out.println(Float.toString(f));  
@@ -1789,52 +1783,38 @@ public interface MyinterfaceB {
 public class MyInterfaceImple implements  MyinterfaceA ,MyinterfaceB {
 
     @Override
-
     public void methodA() {
-
         System.out.println("覆盖重写了A方法");
-
     }
     
 
     @Override
-
     public void methodB() {
-
         System.out.println("覆盖重写了B方法");
-
     }
 
     //对继承的多个接口的冲突方法只需要覆盖重写一次。
-
     @Override
-
     public void method() {
-
         System.out.println("覆盖重写A,B相同的方法。");
-
     }
 
     //对多个接口中的重名的默认方法进行覆盖重写
-
     @Override
-
     public void methodDefault() {
 
     }
-    
 }
 ```
 
 ```java
 //子接口MyInterface,继承了接口MyInterfaceA和接口MyInterfaceB
 public interface MyInterface extends MyInterfaceA,MyInterfaceB {
+    
     @Override
-
     default void methodDefault() {
 
     }
-
 }
 ```
 
@@ -1844,7 +1824,6 @@ public interface MyInterface extends MyInterfaceA,MyInterfaceB {
 public abstract MyAbstractImple implements MyInterfaceA,MyInterfaceB {
 
     @Override
-
     default void methodDefault() {
     }
 
@@ -1857,8 +1836,7 @@ public abstract MyAbstractImple implements MyInterfaceA,MyInterfaceB {
 ```java
 package practice;
  
-public interface A
-{
+public interface A{
  
 	public void getName();
 }
@@ -1867,8 +1845,8 @@ public interface A
 ```java
 package practice;
  
-public interface B extends A
-{
+public interface B extends A{
+    
 	public void getUser();
 }
 ```
@@ -1876,22 +1854,19 @@ public interface B extends A
 ```java
 package practice;
  
-public class C implements B
-{
+public class C implements B{
  
 	@Override
-	public void getName()
-	{
+	public void getName(){
 		// TODO Auto-generated method stub
  
 	}
+    
 	@Override
-	public void getUser()
-	{
+	public void getUser(){
 		// TODO Auto-generated method stub
  
-	}
-	
+	}	
 }
 ```
 
@@ -1911,7 +1886,7 @@ public class C implements B
 
 **1、默认方法**
 
-为了提高代码的可重用性。接口的默认方法有助于在扩展系统功能的同时，不对现有的继承关系及类库产生很大的影响。例如在JDK1.8中，Java集合框架的Collection接口增加了stream()等默认方法，这些默认方法即增强了集合的功能，又能保证对低版本的JDK的兼容。
+为了提高代码的可重用性。接口的默认方法有助于在扩展系统功能的同时，不对现有的继承关系及类库产生很大的影响。例如在`JDK1.8`中，Java集合框架的Collection接口增加了stream()等默认方法，这些默认方法即增强了集合的功能，又能保证对低版本的`JDK`的兼容。
 
 举个简单的例子，假如有一个Animal接口其中有fly()和swim()方法，有一个鸟类Bird和一个鱼类Fish同时实现这个接口，代码如下：
 
@@ -1964,6 +1939,7 @@ public class Fish implements Animal {
 ```java
 //Animal.java
 public interface Animal {
+    
     default void fly() {
         System.out.println("birds can fly...");
     }
@@ -2095,8 +2071,8 @@ Bird类中的fly方法：birds can fly...
 2. 类可以实现很多个接口，但是只能继承一个抽象类
 3. 类可以不实现抽象类和接口声明的所有方法，在这种情况下，类也必须得声明成是抽象的
 4. 抽象类可以在不提供接口方法实现的情况下实现接口
-5. java接口中声明的变量默认都是final的，抽象类可以包含非final变量
-6. java接口中的成员函数默认都是public的，抽象类中的成员函数可以是private，protected或者是public的
+5. Java接口中声明的变量默认都是final的，抽象类可以包含非final变量
+6. Java接口中的成员函数默认都是public的，抽象类中的成员函数可以是private，protected或者是public的
 7. 接口是绝对抽象的，不可以被实例化。抽象类也不可以被实例化，但是如果它包含main方法的话是可以被调用的
 
 **开发中的区别：**
@@ -3769,7 +3745,7 @@ Java语言中允许在一个类（或方法、代码块）的内部定义另一�
 
 **内部类的分类**：有名内部类和匿名内部类。有名内部类又按照作用域不同可以分为：局部内部类和成员内部类，成员内部类又分为：实例内部类和静态内部类。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\内部类分类图.png)
+![](..\java 图片\内部类分类图.png)
 
 
 
@@ -4302,7 +4278,7 @@ Java将异常分为两种类型：编译时**检查性异常**和**非检查性�
 
 #### 9.2 异常类继承层次
 
-![image-20191108160357995](C:\Users\CM\Desktop\Typora\java 图片\Java异常类继承层次.jpeg)
+![](..\java 图片\Java异常类继承层次.jpeg)
 
 ##### 9.2.1 Throwable类
 
@@ -4400,7 +4376,7 @@ divide(5, 0) = 0
 
 **原则**：当前方法有能力解决，则捕获异常进行处理；没有能力解决，则抛出给上层调用方法处理。如果上层调用方法还无力解决，则继续抛给它的上层调用方法，异常就是这样向上传递直到有方法处理它，如果所有的方法都没有处理该异常，那么JVM会终止程序运行。
 
-##### 9.3.1　try-catch语句
+##### 9.3.1try-catch语句
 
 捕获异常是通过try-catch语句实现的，最基本try-catch语句语法如下：
 
@@ -4469,7 +4445,7 @@ public class HelloWorld {
 日期  = Sat Aug 18 00:00:00 CST 2018
 ```
 
-##### 9.3.2　多catch代码块
+##### 9.3.2多catch代码块
 
 如果try代码块中有很多语句会发生异常，而且发生的异常种类又很多。那么可以在try后面跟有多个catch代码块。多catch代码块语法如下：
 
@@ -4595,7 +4571,7 @@ public class HelloWorld {
 }
 ```
 
-##### 9.3.4　多重捕获
+##### 9.3.4多重捕获
 
 多catch代码块客观上提高了程序的健壮性，但是程序代码量大大增加。如果有些异常虽然种类不同，但捕获之后的处理是相同的
 
@@ -4647,7 +4623,7 @@ try{
 
 无论try正常结束还是catch异常结束都会执行finally代码块
 
-![](C:\Users\CM\Desktop\Typora\java 图片\异常处理流程.jpeg)
+![](..\java 图片\异常处理流程.jpeg)
 
 ```java
 import java.io.*;
@@ -4722,7 +4698,7 @@ public class HelloWorld {
 
 运行结果同上
 
-##### 9.4.2　自动资源管理
+##### 9.4.2自动资源管理
 
 使用finally代码块释放资源会导致程序代码大量增加，一个finally代码块往往比正常执行的程序还要多。在Java 7之后提供自动资源管理（Automatic Resource Management）技术，可以替代finally代码块，优化代码结构，提高程序可读性。
 
@@ -4888,7 +4864,7 @@ class MyException extends Exception {
 
 显式抛出异常目的有很多，例如不想某些异常传给上层调用者，可以捕获之后重新显式抛出另外一种异常给调用者。
 
-```
+```java
 import java.io.*;
 import java.text.*;
 import java.util.Date;
@@ -4935,46 +4911,46 @@ public class HelloWorld {
 
     private static class MyException extends Exception {
         //无参数的默认构造import java.io.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+    import java.text.DateFormat;
+    import java.text.ParseException;
+    import java.text.SimpleDateFormat;
+    import java.util.Date;
 
-public class HelloWorld {
-
-    public static void main(String[] args) {
-        try {
-            Date date = readDate();
-            System.out.println("读取的日期  = " + date);
-        } catch (MyException e) {
-            System.out.println("处理MyException...");
-            e.printStackTrace();
-        }
-    }
-
-    public static Date readDate() throws MyException {
-
-        // 自动资源管理
-        try (FileInputStream readfile = new FileInputStream("E:\\IDEA Room\\test\\src\\123.txt");
-             InputStreamReader ir = new InputStreamReader(readfile);
-             BufferedReader in = new BufferedReader(ir)) {
-
-            // 读取文件中的一行数据
-            String str = in.readLine();
-            if (str == null) {
-                return null;
+        public class HelloWorld {
+            
+            public static void main(String[] args) {
+                try {
+                    Date date = readDate();
+                    System.out.println("读取的日期  = " + date);
+                } catch (MyException e) {
+                    System.out.println("处理MyException...");
+                    e.printStackTrace();
+                }
             }
 
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = df.parse(str);
-            return date;
+        public static Date readDate() throws MyException {
 
-        } catch (Exception e) {
-            throw new MyException(e.getMessage());
+            // 自动资源管理
+            try (FileInputStream readfile = new FileInputStream("E:\\IDEA Room\\test\\src\\123.txt");
+                 InputStreamReader ir = new InputStreamReader(readfile);
+                 BufferedReader in = new BufferedReader(ir)) {
+
+                // 读取文件中的一行数据
+                String str = in.readLine();
+                if (str == null) {
+                    return null;
+                }
+
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = df.parse(str);
+                return date;
+
+            } catch (Exception e) {
+                throw new MyException(e.getMessage());
+            }
         }
-    }
 
-    private static class MyException extends Exception {
+    	private static class MyException extends Exception {
         //无参数的默认构造方法，异常描述信息是空的
         public MyException() {
             String message = "error";
@@ -5013,19 +4989,19 @@ Java中提供了丰富的集合接口和类，它们来自于java.util包。下�
 
 本章重点介绍List、Set和Map接口。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\Java主要的集合接口和类.jpeg)
+![](..\java 图片\Java主要的集合接口和类.jpeg)
 
 #### 10.2 List集合
 
 List集合中的元素是有序的，可以重复出现。图20-2是一个班级集合数组，这个集合中有一些学生，这些学生是有序的，顺序是他们被放到集合中的顺序，可以通过序号访问他们。这就像老师给进入班级的人分配学号，第一个报到的是“张三”，老师给他分配的是0，第二个报到的是“李四”，老师给他分配的是1，以此类推，最后一个序号应该是“学生人数-1”。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\List集合.jpeg)
+![](..\java 图片\List集合.jpeg)
 
 List接口的实现类有：**ArrayList** 和 **LinkedList**。ArrayList是基于动态数组数据结构的实现，LinkedList是基于链表数据结构的实现。ArrayList访问元素速度优于LinkedList，LinkedList占用的内存空间比较大，但LinkedList在批量插入或删除数据时优于ArrayList。
 
 不同的结构对应于不同的算法，有的考虑节省占用空间，有的考虑提高运行效率，对于程序员而言，它们就像是“熊掌”和“鱼肉”，不可兼得！提高运行速度往往是以牺牲空间为代价的，而节省占用空间往往是以牺牲运行速度为代价的。
 
-##### 10.2.1　常用方法
+##### 10.2.1常用方法
 
 List接口继承自**Collection**接口，List接口中的很多方法都继承自Collection接口的。List接口中常用方法如下。
 
@@ -5134,7 +5110,7 @@ list集合是空的：false
 []
 ```
 
-##### 10.2.2　遍历集合
+##### 10.2.2遍历集合
 
 集合最常用的操作之一是遍历，遍历就是将集合中的每一个元素取出来，进行操作或计算。List集合遍历有三种方法：
 
@@ -5220,13 +5196,13 @@ public class HelloWorld {
 
 Set集合是由一串无序的，不能重复的相同类型元素构成的集合。下图是一个班级的Set集合。这个Set集合中有一些学生，这些学生是无序的，不能通过类似于List集合的序号访问，而且不能有重复的同学。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\Set集合.jpeg)
+![](..\java 图片\Set集合.jpeg)
 
 **List与Set集合的区别**：List集合中的元素是有序的、可重复的，而Set集合中的元素是无序的、不能重复的。List集合强调的是有序，Set集合强调的是不重复。当不考虑顺序，且没有重复元素时，Set集合和List集合可以互相替换的。
 
 Set接口直接实现类主要是**HashSet**，HashSet是基于**散列表**数据结构的实现。
 
-##### 10.3.1　常用方法
+##### 10.3.1常用方法
 
 Set接口也继承自Collection接口，Set接口中大部分都是继承自Collection接口，这些方法如下。
 
@@ -5290,7 +5266,7 @@ set集合是空的：false
 []
 ```
 
-##### 10.3.2　遍历集合
+##### 10.3.2遍历集合
 
 Set集合中的元素由于没有序号，所以不能使用for循环进行遍历，但可以使用for-each循环和迭代器进行遍历。事实上这两种遍历方法也是继承自**Collection**集合，也就是说所有的Collection集合类型都有这两种遍历方式。
 
@@ -5354,13 +5330,13 @@ Map（映射）集合表示一种非常复杂的集合，允许按照某个键�
 
 下图是Map类型的“国家代号”集合。键是国家代号集合，不能重复。值是国家集合，可以重复。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\Map集合.jpeg)
+![](..\java 图片\Map集合.jpeg)
 
 **Map集合特性**：适合通过键快速访问值，就像查英文字典一样，键就是要查的英文单词，而值是英文单词的翻译和解释等。有的时候，一个英文单词会对应多个翻译和解释，这是与Map集合特性对应的。
 
 Map接口直接实现类主要是**HashMap**，HashMap是基于**散列表**数据结构的实现。
 
-##### 10.4.1　常用方法
+##### 10.4.1常用方法
 
 Map集合中包含两个集合（键和值），所以操作起来比较麻烦，Map接口提供很多方法用来管理和操作集合。主要的方法如下。
 
@@ -6042,11 +6018,11 @@ public class Test {
 
 如下图所示，数据输入的数据源有多种形式，如文件、网络和键盘等，键盘是默认的标准输入设备。而数据输出的目的地也有多种形式，如文件、网络和控制台，控制台是默认的标准输出设备。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\Java流设计理念.jpeg)
+![](..\java 图片\Java流设计理念.jpeg)
 
 所有的输入形式都抽象为输入流，所有的输出形式都抽象为输出流，它们与设备无关。
 
-##### 12.2.2　流类继承层次
+##### 12.2.2流类继承层次
 
 以字节为单位的流称为字节流，以字符为单位的流称为字符流。Java SE提供4个顶级抽象类，两个字节流抽象类：`InputStream`和`OutputStream`；两个字符流抽象类：Reader和Writer。
 
@@ -6054,33 +6030,33 @@ public class Test {
 
    字节输入流根类是`InputStream`。
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\主要的字节输入.jpeg)
+   ![](..\java 图片\主要的字节输入.jpeg)
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\字节输入流类继承层次.jpeg)
+   ![](..\java 图片\字节输入流类继承层次.jpeg)
 
 2. 字节输出流
 
    字节输出流根类是`OutputStream`。
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\主要的字节输出流.jpeg)
+   ![](..\java 图片\主要的字节输出流.jpeg)
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\字节输出流类继承层次.jpeg)
+   ![](..\java 图片\字节输出流类继承层次.jpeg)
 
 3. 字符输入流
 
    字符输入流根类是Reader，这类流以16位的Unicode编码表示的字符为基本处理单位。
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\主要的字节输入.jpeg)
+   ![](..\java 图片\主要的字节输入.jpeg)
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\字符输入流类继承层次.jpeg)
+   ![](..\java 图片\字符输入流类继承层次.jpeg)
 
 4. 字符输出流
 
    字符输出流根类是Writer，这类流以16位的Unicode编码表示的字符为基本处理单位。
 
-   ![](C:\Users\CM\Desktop\Typora\java 图片\主要的字符输出流.jpeg)
+   ![](..\java 图片\主要的字符输出流.jpeg)
 
-​        ![](C:\Users\CM\Desktop\Typora\java 图片\字符输出流类继承层次.jpeg)
+​        ![](..\java 图片\字符输出流类继承层次.jpeg)
 
 #### 12.3 字节流
 
@@ -6246,7 +6222,7 @@ Writer是字符输入流的根类，它主要方法如下：
 - `void flush()`：刷空输出流，并输出所有被缓存的字符。由于某些流支持缓存功能，该方法将把缓存中所有内容强制输出到流中。
 - `void close( )`：流操作完毕后必须关闭。
 
-##### 12.4.3　案例：文件复制
+##### 12.4.3案例：文件复制
 
 `FileReader`构造方法主要有：
 
@@ -6433,7 +6409,7 @@ public class Test01 {
 
 Java程序至少会有一个线程，这就是主线程，程序启动后是由JVM创建主线程，程序结束时由JVM停止主线程。主线程它负责管理子线程，即子线程的启动、挂起、停止等等操作。下图所示是进程、主线程和子线程的关系，其中主线程负责管理子线程，即子线程的启动、挂起、停止等操作。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\进程、主线程和子线程关系.jpeg)
+![](..\java 图片\进程、主线程和子线程关系.jpeg)
 
 获取主线程示例代码如下：
 
@@ -6689,7 +6665,7 @@ public class HelloWorld {
 
    线程退出run()方法后，就会进入死亡状态（Dead），线程进入死亡状态有可以是正常实现完成run()方法进入，也可能是由于发生异常而进入的。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\线程状态.jpeg)
+![](..\java 图片\线程状态.jpeg)
 
 #### 13.4 线程管理
 
@@ -7057,7 +7033,7 @@ public class HelloWorld {
 - `void notify()`：当前线程唤醒此对象等待队列中的一个线程，如图23-7所示该线程将进入就绪状态。
 - `void notifyAll()`：当前线程唤醒此对象等待队列中的所有线程，如图23-7所示这些线程将进入就绪状态。
 
-![](C:\Users\CM\Desktop\Typora\java 图片\线程间通信.jpeg)
+![](..\java 图片\线程间通信.jpeg)
 
 ```java
 //堆栈类
@@ -7185,7 +7161,7 @@ public class HelloWorld {
 
 Java反射机制API主要是 java.lang.Class类和java.lang.reflect包。
 
-##### 14.1.1　java.lang.Class类
+##### 14.1.1java.lang.Class类
 
 `java.lang.Class`类是实现反射的关键所在，Class类的一个实例表示Java的一种数据类型，包括类、接口、枚举、注解（Annotation）、数组、基本数据类型和void，void是“无类型”，主要用于方法返回值类型声明，表示不需要返回值。Class没有公有的构造方法，Class实例是由JVM在类加载时自动创建的。
 
@@ -7245,7 +7221,7 @@ clz4是否为基本类型：false
 
 int和Integer的区别在于int是基本数据类型，所以输出结果为true，Integer是类，是引用类型。可见Class可以描述int等基本数据类型运行时实例。
 
-##### 14.1.2　java.lang.reflect包
+##### 14.1.2java.lang.reflect包
 
 `java.lang.reflect`包提供了反射中用到类，主要的类说明如下：
 
@@ -7295,7 +7271,7 @@ String str = (String) clz.newInstance();
 
 这两条语句相当于`String str = new String()`语句。另外，需要注意`newInstance()`方法有可以会抛出`InstantiationException`和`IllegalAccessException`异常，`InstantiationException`不能实例化异常，`IllegalAccessException`是不能访问构造方法异常。
 
-##### 14.2.1　调用构造方法
+##### 14.2.1调用构造方法
 
 调用方法newInstance()创建对象，这个过程中需要调用构造方法，上面的代码只是调用了String的默认构造方法。如果想要调用非默认构造方法，需要使用Constructor对象，它对应着一个构造方法，获得Constructor对象需要使用Class类的如下方法： 
 
@@ -7334,7 +7310,7 @@ public class HelloWorld {
 }
 ```
 
-##### 依赖注入实现
+##### 14.2.2依赖注入实现
 
 Java反射机制能够在运行时动态加载类，而不是在编译期。在一些框架开发中经常将要实例化的类名保存到配置文件中，在运行时从配置文件中读取类名字符串，然后动态创建对象，建立依赖关系1。采用new创建对象依赖关系是在编译期建立的，反射机制能够将依赖关系推迟到运行时建立，这种依赖关系动态注入进来称为依赖注入。
 
@@ -7833,7 +7809,7 @@ Marker注解中不包含任何的成员，这种注解称为标记注解（Marke
 
 默认情况下注解可以修饰任意的程序元素（类、接口、成员变量、成员方法和数据类型等）。代码第①行使用@Marker注解修饰类。代码第②行是@MyAnnotation(value = "Annotation")注解修饰成员变量，其中value = "Annotation"是为value成员提供数值。代码第③行是@MyAnnotation1(count = 10) 注解修饰成员方法，@MyAnnotation1有两个成员，但是只为count成员赋值，另外一个成员value使用默认值。
 
-##### 15.3.2　案例：使用元注解
+##### 15.3.2案例：使用元注解
 
 上一节声明注解只是最基本形式的注解，对于复杂的注解可以在声明注解时使用元注解。下面通过一个案例介绍一下在自定义注解中使用元注解，在本案例中定义了两个注解。
 
@@ -7849,8 +7825,8 @@ import java.lang.annotation.ElementType;
      @Documented                                         
      @Target({ ElementType.TYPE })                       
      @Retention(RetentionPolicy.RUNTIME)                 
-           public @interface MyAnnotation {                    
-         String description();                          
+     public @interface MyAnnotation {                    
+          String description();                          
      }
 ```
 
