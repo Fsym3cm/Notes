@@ -176,7 +176,7 @@ Java集合类提供了一套设计良好的支持对一组对象进行操作的�
 
 ​		注意：这里异常的抛出条件是检测到modCount！= expectedmodCount 这个条件。如果集合发生变化是修改的值刚好又设置为expectedmodCount 值，则异常不会抛出。因此，不能依赖于这个异常是否抛出而进行并发操作的编程，这个异常只建议用于检查并发修改的bug。
 
-​		场景：Java.util包下的集合类都是快速失败的，不能再多线程
+​		场景：Java.util包下的集合类都是快速失败的，不能在多线程
 
 下发生并发修改(迭代过程中被修改)。
 
@@ -188,7 +188,7 @@ Java集合类提供了一套设计良好的支持对一组对象进行操作的�
 
 ​		场景：java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改。
 
-23，Java中HashMap的工作原理是什么？
+#### 23，Java中HashMap的工作原理是什么？
 
 答：Java中的HashMap是以键值对(key-value)的形式存储元素的。HashMap需要一个hash函数，它使用hashCode()和equals()
 
@@ -218,3 +218,227 @@ Java集合类提供了一套设计良好的支持对一组对象进行操作的�
 4. Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。	
 
 ​        一般现在**不建议用HashTable**,  ①是HashTable是遗留类，内部实现很多没优化和冗余。②即使在**多线程**环境下，现在也有同步的**ConcurrentHashMap**替代，没有必要因为是多线程而用HashTable。
+
+#### 26，数组(Array)和链表(ArrayList)有什么区别？什么时候应该使用Array而不是ArrayList？
+
+答：Array可以包含基本类型和对象类型，ArrayList只能包含对象类型。
+
+​		Array大小是固定的，ArrayList的大小是动态变化的。
+
+​		ArrayList提供了更多的方法和特性，比如：addAll(),removeAll(),iterator()等等。
+
+​			对于基本数据类型，集合使用自动装箱来减少编码工作量。但是，当处理固定大小的基本数据类型时，这种方式相对较慢。
+
+#### 27，ArrayList和LinkedList有什么区别？
+
+答：ArrayList和LinkedList都实现了List接口，他们有以下的不同点：
+
+1. ArrayList是基于索引的数据接口，它的底层是数组。它可以在O(1)时间复杂度对元素进行随机访问。与此对应，LinkList是以元素列表的形式存储它的数据，每一个元素都和它前一个元素和后一个元素链接在一起，在这种情况下，查找某个元素的时间复杂度是O(n).
+2. 相对于ArrayList,LinkedListd的插入，添加，删除速度更快，因为当元素被添加到集合任意位置的时候，不需要像数组那样重新计算大小或者是更新索引。
+3. LinkedList比ArrayList更占内存，因为LinkedList为每一个节点存储了两个引用，一个指向前一个元素，一个指向下一个元素。
+
+#### 28，Comparable和Comparator接口是干什么的？列出它们的区别。
+
+答：Java提供了只包含一个compareTo()方法的Comparable接口。这个方法可以给两个元素排序。具体来说，它返回负数，0，正数来表明已经存在的对象小于，等于，大于输入对象。
+
+​		Java提供了包含compare()和equals()两个方法的Comparator接口。Comparator方法用来给两个输入参数排序，返回负数，0，正数表明第一个数是小于，等于，大于第二个参数。equals()方法需要一个对象作为参数，它用来决定输入参数是否和comparetor相等。只有当输入参数也是一个comparator并且输入参数和当前comparator的排序结果是相同的时候，这个方法才返回true(内部实现使用策略模式)。
+
+#### 29，什么是Java优先队列(Priority Queue)？
+
+答：PriorityQueue是一个基于优先级堆的无界队列，它的元素是按照自然顺序排序的。在创建的时候，我们可以给它提供一个负责给元素排序的比较器。PriorityQueue不允许null值，因为他们没有自然顺序，或者说他们没有任何的相关联的比较器。最后，PriorityQueue不是线程安全的，入队出队的时间复杂度是O(log(N))。
+
+#### 30，你了解大O符号么？你能给出不同数据结构的例子么？
+
+答：大O符号描述了当数据结构里面元素增加的时候，算法的规模或者是一个渐进上界。
+
+​		大O描述当数据结构中的元素增加时，算法的规模和性能在最坏情景下有多好。 
+
+ 		 大O还可以描述其它行为，比如内存消耗。因为集合类实际上是数据结构，因此我们一般使用大O符号基于时间，内存，性能选择最好的实现。大O符号可以对大量数据性能给予一个很好的说明。
+
+#### 31，如何权衡是使用无序的数组还是有序的数字？
+
+答：有序数组：查找，可以使用二分查找，时间复杂度O(log(N))；插入，需要比较，移动数据，找到合适的位置插入数据。
+
+​		无序数组：查找：需要循环遍历O(N)；插入：直接放到末尾O(1)。
+
+#### 32，Java集合类框架的最佳实践有哪些？
+
+答：
+
+1. 根据应用的需要正确选择要使用的集合类型对性能非常重要，比如：假如元素的数量是固定的，而且能事先知道，我们就应该用Array而不是ArrayList。
+2. 有些集合类允许指定初始容量。因此，如果我们能估计出存储的元素数目，我们可以设置初始容量来避免计算hash值或者是扩容。
+3. 为了线程安全，可读性和健壮性的原因应该使用泛型。同时使用泛型还可以避免运行时的ClassCastException。
+4. 使用JDK提供的不变类作为Map的键可以避免为我们的类实现hashCode()和equals()方法。
+5. 编程的时候接口优于实现。
+6. 底层的集合实际上是空的情况下，返回长度是0的集合或者是数组，不要返回null。
+
+#### 33，Enumeration接口和Iterator的区别有哪些？
+
+答：枚举速度快，占用内存少，但是不是快速失败的，线程不安全。迭代允许删除底层数据，枚举不行。
+
+#### 34，HashSet和TreeSet有什么区别？
+
+答：HashSet是由一个Hash表来实现的，它的元素是无序的。
+
+​		HashTree是由红黑树来实现的，它里面的元素是有序的。
+
+#### 35，Java中垃圾回收有什么目的？什么时候进行垃圾回收？
+
+答：垃圾回收是在内存中存在没有引用的对象或超过作用域的对象时进行。其目的是识别并丢弃应用不再使用的对象来释放和重用资源。
+
+#### 36，System.gc()和Runtime.gc()会做什么事情？
+
+答：这两个方法用来提示JVM要进行垃圾回收。但是立即开始垃圾回收还是延迟进行垃圾回收是取决于JVM的。
+
+#### 37，finalize()方法什么时候被调用，析构函数(finalization)的目的是什么？
+
+答：调用时机：finalize()是Object的protected方法，子类可以覆盖该方法以实现资源清理工作，GC在回收对象之前调用该方法。 
+
+  	  在下一个垃圾回收周期中尝试回收该对象，如果该对象重写了finalize()方法，并在这个方法中成功自救(将自身赋予某个应用)，那么这个对象不会被回收，但如果这个对象没有重写finalize()方法或者已经执行过这个方法也自救失败那么finalize方法，将其放入F-Queue队列，由一低优先级线程执行该队列中对象的finalize方法。执行finalize方法完毕后，GC会再次判断该对象是否可达，若不可达，则进行回收，否则，对象“复活”。
+
+  	  finalization的目的：大部分时候，什么都不用做(也就是不需要重载)。只有在某些很特殊的情况下，比如你调用了一些native的方法(一般是C写的)，可以要在finaliztion里去调用C的释放函数。
+
+#### 38，如果对象的引用被置为null，垃圾收集器是否会立即释放对象占用的内存？
+
+答：不会立即释放对象占用的内存。   如果对象的引用被置为null，只是断开了当前线程栈帧中对该对象的引用关系，而垃圾收集器是运行在后台的线程，只有当用户线程运行到安全点(safe point)或者安全区域才会扫描对象引用关系，扫描到对象没有被引用则会标记对象，这时候仍然不会立即释放该对象内存，因为有些对象是可恢复的(在finalize方法中恢复引用)。只有确定了对象无法恢复引用的时候才会清除对象内存。
+
+#### 39，Java堆是什么样子的？什么是堆中的元空间(永久代)?
+
+答：Java堆是Java虚拟机所管理的内存中最大的一块。Java堆是被所有线程所共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存储对象实例，几乎所有的对象实例都在这里分配内存。这一点在Java虚拟机规范中描述是：The  heap is the runntime data area from which memory for all class  instances and arrays is allocated。也就是说是在Java堆上进行分配实例对象和数组的。 
+
+​		元空间是用于存放静态文件，如Java类、方法等。持久代对垃圾回收没有显著影响，但是有些应用可能动态生成或调用一些class。
+
+#### 40，串行收集器和吞吐量收集器的区别是什么？
+
+答：串行GC：整个扫描和复制过程均采用单线程的方式，适合于单cpu，客户端级别。
+
+​		吞吐量GC：采用多线程的方式来完成垃圾收集；适合吞吐量要求较高的场所，比如中等规模或者大规模的应用程序。
+
+#### 41，在Java中，对象什么时候可以被垃圾回收？
+
+答：  当对象变成(GC Roots)不可达时，在下一个垃圾回收周期中尝试回收该对象，如果该对象重写了finalize()方法，并在这个方法中成功自救(将自身赋予某个应用)，那么这个对象不会被回收，但如果这个对象没有重写finalize()方法或者已经执行过这个方法也自救失败，该对象将会被回收。
+
+#### 42，JVM的元空间(永久代)中会发生垃圾回收么？
+
+答：会，条件是 1.该类的实例都被回收。2.加载该类的classLoader已经被回收。3.该类不能通过反射访问到其方法，而且该类的java.lang.class没有被引用 当满足这3个条件时，是可以回收，但回不回收还得看jvm。
+
+#### 43，Java中的两种异常类型是什么？他们有什么区别？
+
+答：Throwable包含了错误(Error)和异常(Excetion两类) 
+
+  		Exception又包含了运行时异常(RuntimeException, 又叫非检查异常)和非运行时异常(又叫检查异常) 
+
+1. Error是程序无法处理了, 如果OutOfMemoryError、OutOfMemoryError等等,  这些异常发生时, java虚拟机一般会终止线程 . 
+2.  运行时异常都是RuntimeException类及其子类,如  NullPointerException、IndexOutOfBoundsException等, 这些异常是不检查的异常,  是在程序运行的时候可能会发生的, 所以程序可以捕捉, 也可以不捕捉. 这些错误一般是由程序的逻辑错误引起的, 程序应该从逻辑角度去尽量避免. 
+3. 检查异常是运行时异常以外的异常, 也是Exception及其子类, 这些异常从程序的角度来说是必须经过捕捉检查处理的,  否则不能通过编译. 如IOException、SQLException等
+
+#### 44，Java中的Exception和Error有什么区别？
+
+答：Error类和Exception类的父类都是throwable类，他们的区别是：
+
+1. Error类一般是与虚拟机相关的问题，如系统崩溃i，虚拟机错误，内存空间不足，方法调用栈溢出等。对于这类错误的导致的应用程序中断，仅靠程序本身无法恢复和预防，遇到这样的错误建议让程序终止。
+2. Exception类表示程序可以处理的异常，可以捕捉且可能恢复。遇到这类异常应尽可能处理异常，使程序恢复运行，而不应随意终止异常。
+
+#### 45，throw和throws有什么区别？
+
+答：
+
+1. Throw用于方法内部，Throws用于方法声明上。
+2. Throw后跟异常对象，Throws后跟异常类型。
+3. Throw后只能跟一个异常对象，Throws后可以一次声明多种异常类型。
+
+#### 46，异常处理完成以后，Exception对象会发生什么变化？
+
+答：Exception对象会在下一个垃圾回收周期中被回收掉。
+
+#### 47，finally代码块和finalize()方法有什么区别？
+
+答：无论是否抛出异常，finally代码块都会执行，他主要是用来释放应用占用的资源。finalize()方法是Object类的一个protected()方法，它是在对象被垃圾回收之前有JVM来调用的。
+
+#### 48，什么是JDBC？
+
+答：JDBC是允许用户在不同数据库
+
+之间做选择的一个抽象层。JDBC允许开发者用Java写数据库应用程序，而不需关心特定数据库的细节。
+
+#### 49，解释一下驱动(Driver)在JDBC中的角色。
+
+答：JDBC驱动提供了特定厂商对JDBC API接口类的实现，驱动必须要提供java.sql下面这个些类的实现：Connection, Statement, PreparedStatement,CallableStatement, ResultSet和Driver。
+
+#### 50，Class.forName()方法有什么作用？
+
+答：初始化参数指定类，并且返回此类对应的Class对象。
+
+#### 51，PreparedStatement比Statement有什么优势？
+
+答：PreparedStatement是预编译的，其性能更好，同时防止sql注入，支持动态参数化查询，提高了代码的可扩展性和可维护性。
+
+#### 52，什么时候使用CallableStatement？用来准备CallableStatement的方法是什么？
+
+答：CallableStatement用来执行存储过程。存储过程是由数据库存储和提供的。存储过程可以接受输入参数，也可以有返回结果。非常鼓励使用存储过程，因为它提供了安全性和模块化。准备一个CallableStatement的方法是：
+CallableStatement Connection.prepareCall();
+
+#### 53，数据库连接池是什么意思？
+
+答：数据库连接的建立，关闭资源消耗巨大。传统数据库访问方式：一次数据访问对应一个物理连接，每次操作数据库都要打开关闭该物理连接，系统性能严重受损。解决方案：数据库连接池。系统初始运行时，主动建立足够足量的连接，组成一个池，每次应用程序请求数据库连接时无需重新打开连接而是从池中取出已有的连接，使用完后不在关闭，而是归还。
+
+####  54，解释下Serialization和Deserialization。
+
+答：实现序列化和反序列化的对象必须实现serializable接口，序列化是将对象变成字节流，存储到磁盘或网络。反序列化是序列化的反过程。
+
+#### 55，什么是Servelt？
+
+答：Servelt是用来处理客户端请求并产生动态网页内容的Java类。Servelt主要是用来处理或者是存储HTML表单提交的数据，产生动态内容，在无状态的HTTP协议下管理状态信息。
+
+#### 56，说一下Servelt的体系结构。
+
+答：Servlet类 ← GenericServlet类 ← HttpServlet类 ← MyServlet类(自己建的类) （←代表继承）。Servelt使用多线程可以并行的为多个请求服务。
+
+#### 58，GenericServlet和HttpServlet有什么区别？
+
+答：
+
+1.HttpServlet 
+
+- 是一个 Servlet, 继承自 GenericServlet. 针对于 HTTP 协议所定制. 
+-  在 service() 方法中直接把 ServletReuqest 和 ServletResponse 转为 HttpServletRequest 和 HttpServletResponse.
+   并调用了重载的 service(HttpServletRequest, HttpServletResponse) 
+- 在 service(HttpServletRequest, HttpServletResponse) 获取了请求方式: request.getMethod(). 根据请求方式有创建了
+   doXxx() 方法(xxx 为具体的请求方式, 比如 doGet, doPost) 
+- 实际开发中, 直接继承 HttpServlet, 并根据请求方式复写 doXxx() 方法即可. 
+- 好处: 直接由针对性的覆盖 doXxx() 方法; 直接使用 HttpServletRequest 和 HttpServletResponse, 不再需要强转. 
+
+  2.GenericServlet 
+
+- 是一个 Serlvet. 是 Servlet 接口和 ServletConfig 接口的实现类. 但是一个抽象类. 其中的 service 方法为抽象方法 
+- 如果新建的 Servlet 程序直接继承 GenericSerlvet 会使开发更简洁. 
+- 具体实现: 
+
+  ①. 在 GenericServlet 中声明了一个 SerlvetConfig 类型的成员变量, 在 init(ServletConfig) 方法中对其进行了初始化 
+ ②. 利用 servletConfig 成员变量的方法实现了 ServletConfig 接口的方法
+ ③. 还定义了一个 init() 方法, 在 init(SerlvetConfig) 方法中对其进行调用, 子类可以直接覆盖 init() 在其中实现对 Servlet 的初始化. 
+ ④. 不建议直接覆盖 init(ServletConfig), 因为如果忘记编写 super.init(config); 而还是用了 SerlvetConfig 接口的方法,
+ 则会出现空指针异常. 
+ ⑤. 新建的 init(){} 并非 Serlvet 的生命周期方法. 而 init(ServletConfig) 是生命周期相关的方法.
+
+#### 59，解释一下Servlt的生命周期。
+
+答：
+
+1. 用户请求。
+2. 服务器接受请求。
+3. 创建请求相应对象。
+4. 判断servlet对象是否存在
+   - 如果存在则调用servlet对象的service方法doget()||dopost()。
+   - 如果不存在则加载Servlet类，创建Servlet对象，调用init初始化，到第一步。
+5. 响应。
+
+在Web应用被卸载或服务器关闭时，系统卸载Servlet，调用destory()方法释放资源。
+
+#### 60，doGet()方法和doPost()方法有什么区别？
+
+答：doGet:get方法把请求参数值追加在请求的URL后面。因为URL对字符数目有限制，进而限制了用在客户端请求的参数值的数目。并且请求中的参数值是可见的，因此，敏感信息不能用这种方式传递。 
+
+​		doPost:post方法通过把请求参数值放在请求体中来克服get方法的限制，因此，可以发送的参数数目是没有限制的。最后，通过POST请求传递的敏感信息对外部客户端是不可见的。 
+
+​		get安全性比post低。 在数据查询时建议用get方式，在数据添加，修改或删除时，建议用post方式
