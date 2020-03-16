@@ -163,3 +163,216 @@ Java线程在运行的生命周期中的指定时刻只可能处于下面6种不
 当线程执行wait()方法之后，线程进入WAITING(等待)状态。进入等待状态的线程需要依靠其他线程的通知才能返回运行状态，而TIME_WAITING(超市等待)状态相当于在等待的基础上增加了超时限制，比如通过`sleep(long millis)`方法或`wait(long milis)`方法可以将Java线程置于TIME_WAITING状态。当超时时间到达后Java线程将会返回到RUNNABLE状态。当线程调用同步方法时，在没有获取到锁的情况下，线程将会进入带BLOCKED(阻塞)状态。线程在执行Runnable的run()方法之后将会进入到TERMINATED(终止)状态。
 
 ### 五，线程优先级
+
+理论上来说系统会根据优先级来决定首先是哪个线程进入运行状态。当CPU比较闲的时候，设置线程优先级几乎不会有任何作用，而且很多操作系统压根不会理会你设置的线程优先级，所以不要让让业务过度依赖于线程的优先级。
+
+另外，现场优先级具有继承特性比如A线程启动B线程，则B线程的优先级和A是一样的。线程优先级还具有随机性也就是说线程优先级高的不一定每一次斗仙执行完。
+
+Thread类中包含的成员变量代表了线程的某些优先级。比如`Thread.MIN_PRIORITY`(常数1),`Thread.NORM_PRIORITY`(常数1),`Thread.MAX_PRIORITY`(常数1)。其中每个线程的优先级都在1到10之间，默认情况下优先级都是`Thread.NORM_PRIORITY`(常数5)。
+
+**一般情况下，不会对象池设定优先级别，更不会让某些严重地依赖线程的优先级别，比如权重，借助优先级设定某个任务的权重吗，这种方式是不可取的，一般定义线程的时候使用默认的优先级就好了。**
+
+相关方法：
+
+```java
+public final void setPriority(int newPriority) //为线程设定优先级
+public final int getPriority() //获取线程的优先级
+```
+
+设置线程优先级方法源码：
+
+```java
+public final void setPriority(int newPriority) {
+    ThreadGroup g;
+    checkAccess();
+    // 线程优先级不能小于1也不能大于10，否则会抛出异常
+    if (newPriority > MAX_PRIORITY || newPriority < MIN_PRIORITY) {
+        throw new IllegalArgumentException();
+    }
+    // 如果指定的线程优先级大于该线程所在现场组的最大优先级，那么该线程的优先级设为该线程组的最大优先级
+    if((g = getThreadGroup()) != null) {
+        if (newPriority > g.getMaxPriority()) {
+            newPriority = g.getMaxPriority();
+        }
+        setPriority0(priority = newPriority);
+    }
+}
+```
+
+### 六，守护线程和用户线程
+
+#### 守护线程和用户线程简介：
+
+- 用户线程：运行在前台，执行具体的任务，比如程序的主线程，连接网络的子线程等都是用户线程。
+- 守护线程：运行在后台，为其他前台线程服务，也可以说守护线程是`JVM`中非守护现代的“佣人”。一旦所有用户线程都结束运行，守护线程会随`JVM`一起结束工作。
+
+main函数所在的线程就是一个用户线程，main函数启动的同时在`JVM`的内部同时还启动了很多守护线程，比如说垃圾回收线程。
+
+#### 那么守护线程和用户线程有什么区别？
+
+比较明显的区别之一是用户线程结束，`JVM`退出，不管这个时候有没有守护线程运行。而守护线程不会影响`JVM`的退出。
+
+#### 注意事项：
+
+1. `setDaemon(true)`必须在`start()`方法前执行，否则会抛出`IllegalThreadStateException`异常。
+2. 在守护线程中产生的新线程也是守护线程。
+3. 不是所有的任务都可以分配给守护线程来执行，比如读写操作或者计算逻辑。
+4. 守护(Daemon)线程中不能依靠finally块的内容来确保执行关闭或者清理资源的逻辑。因为一旦所有的用户线程都结束运行，守护线程会随`JVM`一起结束工作，所以守护线程中的finally语句块可能无法被执行。
+
+### 七，上下文切换
+
+多线程编程中一般线程的个数都大于CPU核心的个数，而一个CPU核心在任意时刻只能被一个线程使用，为了让这些线程都能得到有效执行，CPU采取的策略是为每个线程分配时间片并轮转的形式。当一个线程的时间片用完的时候就会重新处于就绪状态让其他线程使用，这个过程就属于一次上下文切换。
+
+概括来说就是：当任务在执行完CPU时间片切换到另一个任务之前会先保存自己的状态，以便下次再切换回这个任务时，可以再加载这人任务的状态。**任务从保存到在加载的过程就是一次上下文切换**。
+
+上下文切换通常是计算密集型的。也就是说，他需要相当客观的处理器时间，在每秒几十上百次的切换中，每次切换都需要纳秒量级的时间。所以，上下文切换对系统来说意味着消耗大量的CPU时间，事实上，可能是操作系统中时间消耗最大的操作。
+
+Linux相比于其他的操作系统(包括其他类Unix系统)有很多优点，其中一项就是，去上下文切换和模式切换的时间消耗非常少。
+
+### 八，线程死锁
+
+#### 认识线程死锁
+
+多个线程同时被阻塞，他们中的一个或者全部都在等待某个资源被释放。由于线程被无限期的阻塞，因此程序不可能正常终止。
+
+如下图所示，线程A持有资源2，线程B持有资源1，他们同时都想申请对方的资源，所以这两个线程就会像等待而进入死锁状态。
+
+![](..\Photo\Deadlock.png)
+
+下面这个例子模拟上图死锁的情况。
+
+```java
+public class Deadlock {
+
+    private static Object resource1 = new Object();//资源 1
+    private static Object resource2 = new Object();//资源 2
+
+    /*必须要写sleep*/
+    public static void main(String[] args) {
+        new Thread(() ->{
+            synchronized (resource1){
+                System.out.println(Thread.currentThread() + "得到资源一");
+                try {
+                    Thread.sleep(1000);
+//                    resource1.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "等待资源二");
+                synchronized (resource2){
+//                    resource2.notify();
+                    System.out.println(Thread.currentThread() + "得到资源二");
+                }
+            }
+        }, "线程一").start();
+
+        new Thread(() -> {
+            synchronized (resource2){
+                System.out.println(Thread.currentThread() + "得到资源二");
+                try {
+                    Thread.sleep(1000);
+//                    resource2.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "等待资源一");
+                synchronized (resource1){
+//                    resource1.notify();
+                    System.out.println(Thread.currentThread() + "得到资源一");
+                }
+            }
+        }, "线程二").start();
+    }
+}
+
+```
+
+运行结果：
+
+```java
+Thread[线程二,5,main]得到资源二
+Thread[线程一,5,main]得到资源一
+Thread[线程一,5,main]等待资源二
+Thread[线程二,5,main]等待资源一
+```
+
+线程A通过`synchronized(resource1)`获得`resource1`的监视器锁，然后通过`Thread.sleep(1000)`；让线程休眠`1s`，为的是让线程B得到执行然后或缺到`resource2`的监视器锁。线程A和线程B休眠都结束了都开始试图请求获取对方的资源，然后然后两个线程就会陷入互相等待的状态，这也就产生了死锁。上面例子符合产生死锁的四个必要条件。
+
+1. 互斥条件：该资源任意一个时刻只由一个线程占用。
+2. 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。
+3. 不剥夺条件：线程已获得的资源在未使用完之前不能被其他线程强行剥夺，只有自己使用完毕后才释放资源。
+4. 循环等待条件：若干进程之间形成一种头尾相接的循环等待资源关系。
+
+#### 如何预防线程死锁？
+
+我们只要破坏产生死锁的四个条件中的其中一个就可以了。
+
+**破坏互斥条件**
+
+这个条件我们没有办法破坏，以为内我们用锁本来就是想让他们互斥(临界资源需要互斥访问)。
+
+**破坏请求与保持条件**
+
+一次性申请所有的条件。
+
+**破坏不剥夺条件**
+
+占用部分资源的线程进一步申请其他资源时，如果申请不到，可以主动释放它占有的资源。
+
+**破坏循环等待条件**
+
+靠按序申请资源来预防。按某一顺序申请资源，释放资源则反序释放。
+
+```java
+public class Deadlock {
+
+    private static Object resource1 = new Object();//资源 1
+    private static Object resource2 = new Object();//资源 2
+
+    /*必须要写sleep*/
+    public static void main(String[] args) {
+        new Thread(() ->{
+            synchronized (resource1){
+                System.out.println(Thread.currentThread() + "得到资源一");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "等待资源二");
+                synchronized (resource2){
+                    System.out.println(Thread.currentThread() + "得到资源二");
+                }
+            }
+        }, "线程一").start();
+
+        new Thread(() -> {
+            synchronized (resource1){
+                System.out.println(Thread.currentThread() + "得到资源一");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "等待资源二");
+                synchronized (resource2){
+                    System.out.println(Thread.currentThread() + "得到资源二");
+                }
+            }
+        }, "线程二").start();
+    }
+}
+```
+
+运行结果：
+
+```java
+Thread[线程一,5,main]得到资源一
+Thread[线程一,5,main]等待资源二
+Thread[线程一,5,main]得到资源二
+Thread[线程二,5,main]得到资源一
+Thread[线程二,5,main]等待资源二
+Thread[线程二,5,main]得到资源二
+```
+
+或者使用`wait()`和`notif()`使资源访问安装规定顺序来访问(详见上份代码注释)。
