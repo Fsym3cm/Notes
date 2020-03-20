@@ -89,11 +89,11 @@ Java堆是垃圾收集器管理的主要区域，因此也被称作`GC`堆(Garba
 2. 老年代(Old Generation)。
 3. 永久代(Permanent Generation)。
 
-![](..\Photo\HeapMemory1.7.jfif)
+![](../Photo/HeapMemory1.7.jfif)
 
 `JDK1.8`版本之后方法区(`HotSpot`的永久代)被彻底移除了，取而代之是元空间，元空间使用的是直接内存。
 
-![](..\Photo\HeapMemory1.8.jfif)
+![](../Photo/HeapMemory1.8.jfif)
 
 上图所示的Eden区，两个Survivor区都属于新生代(为了区分，这两个Survivor区域按照顺序被命名为from和to)，中间一层属于老年代。
 
@@ -162,7 +162,7 @@ Java堆是垃圾收集器管理的主要区域，因此也被称作`GC`堆(Garba
 
 #### 3.1，对象的创建
 
-![](..\Photo\CreateObject.png)
+![](../Photo/CreateObject.png)
 
 1. **类加载检查**
 
@@ -176,7 +176,7 @@ Java堆是垃圾收集器管理的主要区域，因此也被称作`GC`堆(Garba
 
    选择以上两种方法中的哪一种，取决于Java堆是否规整。而Java堆内存是否规整取决于`GC`收集器的算法是‘’标记-清除‘’还是“标记-整理”(也称为”标记-压缩“)，复制算法内存也是规整的。
 
-   ![](..\Photo\MemoryAllocation.png)
+   ![](../Photo/MemoryAllocation.png)
 
    **内存分配并发问题**
 
@@ -213,11 +213,11 @@ Java堆是垃圾收集器管理的主要区域，因此也被称作`GC`堆(Garba
 
 1. 句柄：如果使用句柄的话，那么Java堆中将会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄包含了对象实例数据与类型数据各自的具体地址信息。
 
-   ![](..\Photo\Handle.png)
+   ![](../Photo/Handle.png)
 
 2. 直接指针：如果使用直接指针访问，那么Java堆对象的布局就必须考虑如何放置访问类型数据的相关信息，而reference中存储的直接就是对象的地址。
 
-   ![](..\Photo\DirectPointer.png)
+   ![](../Photo/DirectPointer.png)
 
    **这两种对象访问方式各有优势。使用句柄来访问的最大好处是reference中存储的是稳定的句柄地址，在对象被移动时只会改变句柄中的实例数据指针，而reference本身不需要修改。使用直接指针访问方式最大的好处就是速度快，它节省了一次指针定位的时间开销。**
 
@@ -242,7 +242,7 @@ System.out.println(str2==str3);//false
 
 **只要使用new方法，便需要创建新的对象。**
 
-![](..\Photo\NewString.png)
+![](../Photo/NewString.png)
 
 **String类型的常量池比较特殊。它的主要使用方法有两种：**
 
@@ -272,7 +272,7 @@ System.out.println(str3 == str5);//true
 System.out.println(str4 == str5);//false
 ```
 
-![](..\Photo\StringSplice.png)
+![](../Photo/StringSplice.png)
 
 尽量避免多个字符串拼接，因为这一会重新创建对象。如果需要改变字符串的话，可以使用`StringBuilder`或者`StringBuffer`(线程安全)。
 
@@ -357,23 +357,23 @@ Integer i4 = new Integer(40);
 Integer i5 = new Integer(40);
 Integer i6 = new Integer(0);
 
-System.out.println("i1=i2   " + (i1 == i2));
-System.out.println("i1=i2+i3   " + (i1 == i2 + i3));
-System.out.println("i1=i4   " + (i1 == i4));
-System.out.println("i4=i5   " + (i4 == i5));
-System.out.println("i4=i5+i6   " + (i4 == i5 + i6));   
-System.out.println("40=i5+i6   " + (40 == i5 + i6));   
+System.out.println("i1 = i2" + (i1 == i2));
+System.out.println("i1 = i2 + i3   " + (i1 == i2 + i3));
+System.out.println("i1 = i4" + (i1 == i4));
+System.out.println("i4 = i5" + (i4 == i5));
+System.out.println("i4 = i5 + i6   " + (i4 == i5 + i6));   
+System.out.println("40 = i5 + i6   " + (40 == i5 + i6));   
 ```
 
 运行结果：
 
 ```java
-i1=i2   true
-i1=i2+i3   true
-i1=i4   false
-i4=i5   false
-i4=i5+i6   true
-40=i5+i6   true
+i1 = i2   true
+i1 = i2+i3   true
+i1 = i4   false
+i4 = i5   false
+i4 = i5 + i6   true
+40 = i5 + i6   true
 ```
 
 解释：
