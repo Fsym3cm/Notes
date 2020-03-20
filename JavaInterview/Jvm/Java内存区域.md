@@ -12,11 +12,11 @@ Java虚拟机在执行Java程序的过程中会把它管理的内存划分为若
 
 `JDK1.8`之前：
 
-![](..\Photo\MemoryModel.png)
+![](../Photo/MemoryModel.png)
 
 `JDK1.8`:
 
-![](..\Photo\JavaRAM.png)
+![](../Photo/JavaRAM.png)
 
 **线程私有的：**
 

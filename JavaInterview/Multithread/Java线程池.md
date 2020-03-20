@@ -32,7 +32,7 @@ Executor框架不仅包括了线程池的管理，还提供了线程工厂，队
 
    **在实际开发中，我们需要关注`ThreadPoolExecutor`类。**
 
-   ![](..\Photo\Executor.png)
+   ![](../Photo/Executor.png)
 
 3. **异步计算的结果(Future)**
 
@@ -292,7 +292,7 @@ public void execute(Runnable command) {
 }
 ```
 
-![](..\Photo\Execute.png)
+![](../Photo/Execute.png)
 
 #### 4.3，几个常见对比
 

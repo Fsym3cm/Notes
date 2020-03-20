@@ -1,6 +1,6 @@
 # Synchronized
 
-![](..\Photo\Synchronized.png)
+![](../Photo/Synchronized.png)
 
 ### synchronized关键字最主要的三种使用方式的总结
 
