@@ -43,13 +43,13 @@ static int hash(int h) {
 
 所谓**“拉链法”**就是：将数组和链表相结合。也就是说创建一个链表数组，数组中的每一格就是一个链表。若碰到hash冲突，就将冲突的值加到链表中即可。
 
-![](Photo\ZipperMethod.png)
+![](Photo/ZipperMethod.png)
 
 #### `JDK1.8` 之后
 
 相比于之前的版本，`JDK1.8` 在解决哈希冲突时有了较大的变化，当链表长度大于阈值(默认为8)时，将链表转化为红黑树，以减少搜索时间。
 
-![](Photo\RedBlackTree.png)
+![](Photo/RedBlackTree.png)
 
 **类的属性：**
 
@@ -246,7 +246,7 @@ final void putMapEntries(Map<? extends K, ? extends V> m, boolean evict) {
 - 如果定位到的数组位置没有元素就直接插入。
 - 如果定位到的数组位置有元素就和要插入的key比较，如果Key相同就直接覆盖，如果Key不相同，就判断p是否是一个树节点，如果是就调用`e = ((TreeNode<K, V>)p).putTreeVal(this, tab, hash, key, value)`将元素添加进入。如果不是就遍历链表插入(插入的是链表尾部)。
 
-![](Photo\Put.png)
+![](Photo/Put.png)
 
 ```java
 public V put(K key, V value) {

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6bf07a29-ee77-4efd-ba8f-643d825afbc9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZAGmMyczccpgLje9nhXblsbMzy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.Singleton">
+    <configuration name="CallableDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.chengzimm.CallableDemo" />
+      <module name="Multithread" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chengzimm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Deadlock" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.chengzimm.Deadlock" />
+      <module name="Multithread" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chengzimm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.chengzimm.Run" />
+      <module name="Multithread" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chengzimm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Singleton" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.chengzimm.Singleton" />
+      <module name="Multithread" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chengzimm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadPoolExecutorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.chengzimm.ThreadPoolExecutorDemo" />
+      <module name="Multithread" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chengzimm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Run" />
+      <item itemvalue="Application.Deadlock" />
+      <item itemvalue="Application.Singleton" />
+      <item itemvalue="Application.ThreadPoolExecutorDemo" />
+      <item itemvalue="Application.CallableDemo" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Singleton" />
+        <item itemvalue="Application.CallableDemo" />
+        <item itemvalue="Application.ThreadPoolExecutorDemo" />
+        <item itemvalue="Application.Deadlock" />
+        <item itemvalue="Application.Run" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bf07a29-ee77-4efd-ba8f-643d825afbc9" name="Default Changelist" comment="" />
+      <created>1584274642141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584274642141</updated>
+      <workItem from="1584274643779" duration="14219000" />
+      <workItem from="1584527664742" duration="7912000" />
+      <workItem from="1584612695552" duration="2573000" />
+      <workItem from="1584787610529" duration="595000" />
+      <workItem from="1585124408360" duration="477000" />
+      <workItem from="1585125009716" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1584539236393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1584539236393" />
+    <state width="1493" height="275" key="GridCell.Tab.0.bottom" timestamp="1585124906735">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="275" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585124906735" />
+    <state width="1493" height="275" key="GridCell.Tab.0.center" timestamp="1585124906734">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="275" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585124906734" />
+    <state width="1493" height="275" key="GridCell.Tab.0.left" timestamp="1585124906734">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="275" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585124906734" />
+    <state width="1493" height="275" key="GridCell.Tab.0.right" timestamp="1585124906734">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="275" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585124906734" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1584543550922">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584543550922" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1584543550922">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584543550922" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1584543550922">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584543550922" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1584543550922">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584543550922" />
+    <state x="353" y="55" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584535453892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="353" y="55" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1584535453892" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/chengzimm/ThreadPoolExecutorDemo.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
